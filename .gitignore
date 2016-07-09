@@ -1,0 +1,27 @@
+
+# Created by https://www.gitignore.io/api/java
+
+### Java ###
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+/exemplo/nbproject/private/
+/exemplo/build/
+/exemplo/dist/
+/ProjetoVeiculo/nbproject/private/
+/ProjetoVeiculo2/nbproject/private/
+/ProjetoAluno/nbproject/private/
+/ProjetoAluno/build/
+/dist/
+/mavenproject1/target/
+/ProjexSol-Alpha/target/
+/ProjexSol-Beta/nbproject/private/
