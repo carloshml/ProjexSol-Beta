@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author aluno
+ * @author Equipe ProjexSol
  */
 @Entity
 @Table(name= "areaDeInteresses")

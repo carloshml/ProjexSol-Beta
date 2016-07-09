@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -38,12 +39,13 @@ public class Oportunidade implements Serializable {
     private String nome;
     @Size(max = 120)
     private String descricao;
-    @Size(max = 120)
-    private AreaDeInteresses areaDeInteresses;
+    @JoinColumn( name= "fk_areaDeInteresses", nullable = false)
+    @OneToMany
+    private ArrayList< AreaDeInteresses > areaDeInteresses;
     @OneToMany
     private final ArrayList<Voluntario> voluntarios;
 
-    public Oportunidade(int codigo, String nome, String descricao, AreaDeInteresses areaDeInteresses) {
+    public Oportunidade(int codigo, String nome, String descricao, ArrayList< AreaDeInteresses > areaDeInteresses) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -80,11 +82,11 @@ public class Oportunidade implements Serializable {
         this.descricao = descricao;
     }
 
-    public AreaDeInteresses getAreaDeInteresses() {
+    public ArrayList< AreaDeInteresses > getAreaDeInteresses() {
         return areaDeInteresses;
     }
 
-    public void setAreaDeInteresses(AreaDeInteresses areaDeInteresses) {
+    public void setAreaDeInteresses(ArrayList< AreaDeInteresses >  areaDeInteresses ) {
         this.areaDeInteresses = areaDeInteresses;
     }
 

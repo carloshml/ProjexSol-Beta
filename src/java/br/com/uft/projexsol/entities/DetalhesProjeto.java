@@ -28,6 +28,7 @@ public class DetalhesProjeto implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 60)
     private int codigo;
     @Size(max = 600)
     private String justificativa;

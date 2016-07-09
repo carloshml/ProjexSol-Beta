@@ -12,6 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -32,9 +35,11 @@ public class Disciplina implements Serializable {
     private int codigo;
     @Size(max = 60)
     private String nome;
-    @Size(max = 20)
+    @JoinColumn( name= "fk_curso", nullable = false )
+    @OneToOne
     private Curso curso;
-    @Size(max = 60)
+    @JoinColumn( name= "fk_docente", nullable = false )
+    @OneToOne
     private Docente docente;
 
     public Disciplina(int codigo, String nome, Curso curso, Docente docente) {

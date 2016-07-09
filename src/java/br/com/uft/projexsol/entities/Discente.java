@@ -33,12 +33,10 @@ public class Discente extends Voluntario implements Serializable {
     @Column(name = "id")
     private Integer id;
     @JoinColumn( name="fk_curso", nullable = false)
-    @OneToOne
-    @Size(max = 40)
-    
+    @OneToOne    
     private Curso curso;
+    @JoinColumn( name="fk_disciplinas", nullable = false)
     @OneToMany
-    @Size(max = 40)
     private ArrayList<Disciplina> disciplinas;
 
   

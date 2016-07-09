@@ -51,9 +51,10 @@ public class Voluntario implements Serializable {
     @Column
     private String email;
     @JoinColumn(  name= "fk_endereco", nullable = false )
-    @OneToOne(mappedBy = "voluntario")
+    @OneToOne
     private Endereco endereco;
-    @OneToMany
+    @JoinColumn(  name= "fk_areasDeInteresse", nullable = false )
+    @OneToOne
     private ArrayList<AreaDeInteresses> areasDeInteresses;
 
     public Voluntario(int codigo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, ArrayList<AreaDeInteresses> areasDeInteresses) {

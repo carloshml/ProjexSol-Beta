@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author PedroLima
+ * @author Equipe ProjexSol
  */
 @Entity
 @Table(name= "beneficiario")

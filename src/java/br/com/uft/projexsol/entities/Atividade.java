@@ -16,6 +16,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,7 +26,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author PedroLima
+ * author Equipe ProjexSol
  */
 @Entity
 @Table(name= "atividade")
@@ -43,7 +44,8 @@ public class Atividade implements Serializable {
     @Size(max = 60)
     @OneToMany(mappedBy = "Atividade")
     private ArrayList<Beneficiario> beneficiarios;
-    @Size(max = 100)
+    @JoinColumn( name= "fk_endereco", nullable = false)
+    @OneToMany
     private Endereco local;
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp horario;

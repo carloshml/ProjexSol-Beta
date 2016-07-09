@@ -39,9 +39,14 @@ public class Projeto implements Serializable  {
     @Column(name = "id")
     private Integer id;
     private int codigo;
+    @JoinColumn(  name= "fk_voluntario", nullable = false )
+    @OneToOne
     private Voluntario gerenteProjeto;
     private double custoProjeto;
+    @JoinColumn(  name= "fk_detalhes", nullable = false )
+    @OneToOne
     private DetalhesProjeto detalhes;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataCriacao;
     @Size(max = 120)
     private String linhaProgramatica;
