@@ -7,6 +7,7 @@ package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -60,8 +61,8 @@ public class Acao implements Serializable {
     @Column(name = "descricao")
     private String descricao;
     @JoinColumn( name= "fk_atividade", nullable = false)
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "acao")
-    private ArrayList<Atividade> atividades;
+    @OneToMany
+    private List<Atividade> atividades;
 
     public Acao() {
     }
@@ -124,11 +125,11 @@ public class Acao implements Serializable {
         this.descricao = descricao;
     }
 
-    public ArrayList<Atividade> getAtividades() {
+    public List<Atividade> getAtividades() {
         return atividades;
     }
 
-    public void setAtividades(ArrayList<Atividade> atividades) {
+    public void setAtividades(List<Atividade> atividades) {
         this.atividades = atividades;
     }
 

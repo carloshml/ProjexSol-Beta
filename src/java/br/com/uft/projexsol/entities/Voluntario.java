@@ -6,7 +6,7 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -54,10 +54,10 @@ public class Voluntario implements Serializable {
     @OneToOne
     private Endereco endereco;
     @JoinColumn(  name= "fk_areasDeInteresse", nullable = false )
-    @OneToOne
-    private ArrayList<AreaDeInteresses> areasDeInteresses;
+    @OneToMany
+    private List<AreaDeInteresses> areasDeInteresses;
 
-    public Voluntario(int codigo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, ArrayList<AreaDeInteresses> areasDeInteresses) {
+    public Voluntario(int codigo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
         setCodigo(codigo);
         setNome(nome);
         setCpf(cpf);

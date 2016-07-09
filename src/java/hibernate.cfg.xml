@@ -8,5 +8,24 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping class="br.com.uft.projexsol.entities.Acao"/>
+    <mapping class="br.com.uft.projexsol.entities.Administrador"/>
+    <mapping class="br.com.uft.projexsol.entities.AreaDeInteresses"/>
+    <mapping class="br.com.uft.projexsol.entities.Atividade"/>
+    <mapping class="br.com.uft.projexsol.entities.Avaliacao"/>
+    <mapping class="br.com.uft.projexsol.entities.Beneficiario"/>
+    <mapping class="br.com.uft.projexsol.entities.Curso"/>
+    <mapping class="br.com.uft.projexsol.entities.Departamento"/>
+    <mapping class="br.com.uft.projexsol.entities.DetalhesProjeto"/>
+    <mapping class="br.com.uft.projexsol.entities.Discente"/>
+    <mapping class="br.com.uft.projexsol.entities.Disciplina"/>
+    <mapping class="br.com.uft.projexsol.entities.Docente"/>
+    <mapping class="br.com.uft.projexsol.entities.Endereco"/>
+    <mapping class="br.com.uft.projexsol.entities.FomentoProjeto"/>
+    <mapping class="br.com.uft.projexsol.entities.ITS"/>
+    <mapping class="br.com.uft.projexsol.entities.InstituicaoDeEnsino"/>
+    <mapping class="br.com.uft.projexsol.entities.Oportunidade"/>
+    <mapping class="br.com.uft.projexsol.entities.Projeto"/>
+    <mapping class="br.com.uft.projexsol.entities.Voluntario"/>
   </session-factory>
 </hibernate-configuration>

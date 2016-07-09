@@ -6,7 +6,7 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Basic;
@@ -67,25 +67,27 @@ public class Projeto implements Serializable  {
     @Column(name = "dataFinal")
     @Temporal(TemporalType.DATE)
     private Date dataFinal;
-    @JoinColumn(name= "fk_areaDeInteresse")
-    @OneToOne(mappedBy = "voluntario")
-    private ArrayList<AreaDeInteresses> areasDeInteresses;
+    @OneToMany
+    private List<AreaDeInteresses> areasDeInteresses;
     @Column(name = "fomentoProjeto")
     private FomentoProjeto dadosFomento;
-
-    private boolean autorizado;
+    @JoinColumn( name= "fk_acao", nullable = false)
     @OneToMany
-    private ArrayList<Oportunidade> oportunidades;
+    private List<Acao> acoes;
+    private boolean autorizado;
+    @JoinColumn( name= "fk_oportunidade", nullable = false)
+    @OneToMany
+    private List<Oportunidade> oportunidades;
     @OneToOne
     private ITS instituicaoTerceiroSetor;
     @OneToMany
-    private ArrayList<Avaliacao> avaliacoesProjeto;
+    private List<Avaliacao> avaliacoesProjeto;
 
-    public ArrayList<Avaliacao> getAvaliacoesProjeto() {
+    public List<Avaliacao> getAvaliacoesProjeto() {
         return avaliacoesProjeto;
     }
 
-    public void setAvaliacoesProjeto(ArrayList<Avaliacao> avaliacoesProjeto) {
+    public void setAvaliacoesProjeto(List<Avaliacao> avaliacoesProjeto) {
         this.avaliacoesProjeto = avaliacoesProjeto;
     }
 
@@ -97,11 +99,11 @@ public class Projeto implements Serializable  {
         this.instituicaoTerceiroSetor = instituicaoTerceiroSetor;
     }
 
-    public ArrayList<Oportunidade> getOportunidades() {
+    public List<Oportunidade> getOportunidades() {
         return oportunidades;
     }
 
-    public void setOportunidades(ArrayList<Oportunidade> oportunidades) {
+    public void setOportunidades(List<Oportunidade> oportunidades) {
         this.oportunidades = oportunidades;
     }
 
@@ -113,15 +115,15 @@ public class Projeto implements Serializable  {
         this.autorizado = autorizado;
     }
 
-    public ArrayList<Acao> getAcoes() {
+    public List<Acao> getAcoes() {
         return acoes;
     }
 
-    public void setAcoes(ArrayList<Acao> acoes) {
+    public void setAcoes(List<Acao> acoes) {
         this.acoes = acoes;
     }
 
-    private ArrayList<Acao> acoes;
+    
 
     public Date getDataCriacao() {
         return dataCriacao;
@@ -187,11 +189,11 @@ public class Projeto implements Serializable  {
         this.dataFinal = dataFinal;
     }
 
-    public ArrayList<AreaDeInteresses> getAreasDeInteresses() {
+    public List<AreaDeInteresses> getAreasDeInteresses() {
         return areasDeInteresses;
     }
 
-    public void setAreasDeInteresses(ArrayList<AreaDeInteresses> areasDeInteresses) {
+    public void setAreasDeInteresses(List<AreaDeInteresses> areasDeInteresses) {
         this.areasDeInteresses = areasDeInteresses;
     }
 

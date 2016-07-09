@@ -7,6 +7,7 @@ package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,7 +37,7 @@ public class Departamento implements Serializable {
     private String nome;
     @Size(max = 40)
     @OneToMany
-    private ArrayList<Curso> cursos;
+    private List<Curso> cursos;
 
     public Departamento() {
     }
@@ -67,11 +68,11 @@ public class Departamento implements Serializable {
         this.nome = nome;
     }
 
-    public ArrayList<Curso> getCursos() {
+    public List<Curso> getCursos() {
         return cursos;
     }
 
-    public void setCursos(ArrayList<Curso> cursos) {
+    public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
     }
 

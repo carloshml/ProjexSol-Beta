@@ -5,8 +5,10 @@
  */
 package br.com.uft.projexsol.app.EntityManager;
 
+import org.hibernate.Session;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
+import sun.swing.SwingUtilities2;
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
@@ -29,5 +31,12 @@ public class FabricaPersistente {
     
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+    public static void main (String args [])
+    {
+        SessionFactory fabrica = FabricaPersistente.getSessionFactory();
+        Session sessao = fabrica.openSession();
+        sessao.close();
+        fabrica.close();
     }
 }

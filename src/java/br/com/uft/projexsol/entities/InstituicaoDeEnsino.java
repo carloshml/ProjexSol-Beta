@@ -7,6 +7,7 @@ package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -46,8 +48,8 @@ public class InstituicaoDeEnsino implements Serializable {
     private String estado;
     @Size(max = 20)
     private String telefone;
-    @OneToOne
-    private ArrayList<Departamento> departamentos;
+    @OneToMany
+    private List<Departamento> departamentos;
 
     public InstituicaoDeEnsino(int codigo, String nome, String cnpj, Endereco endereco, String email, String telefone, String estado) {
         this.codigo = codigo;
@@ -116,11 +118,11 @@ public class InstituicaoDeEnsino implements Serializable {
         this.telefone = telefone;
     }
 
-    public ArrayList<Departamento> getDepartamentos() {
+    public List<Departamento> getDepartamentos() {
         return departamentos;
     }
 
-    public void setDepartamentos(ArrayList<Departamento> departamentos) {
+    public void setDepartamentos(List<Departamento> departamentos) {
         this.departamentos = departamentos;
     }
 

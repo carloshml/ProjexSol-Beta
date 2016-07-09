@@ -6,7 +6,7 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,11 +26,6 @@ import javax.validation.constraints.Size;
 @Table (name = "docente")
 public class Docente extends Voluntario implements Serializable{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
     @JoinColumn( name= "fk_curso", nullable = false)
     @OneToOne
     private Curso curso;
@@ -39,7 +34,7 @@ public class Docente extends Voluntario implements Serializable{
     private Departamento departamento;
 
 
-    public Docente(int codigo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, Curso curso, ArrayList<AreaDeInteresses> areasDeInteresses, Departamento departamento) {
+    public Docente(int codigo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, Curso curso, List<AreaDeInteresses> areasDeInteresses, Departamento departamento) {
         super(codigo, nome, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
         this.curso = curso;
         this.departamento = departamento;

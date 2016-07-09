@@ -7,6 +7,7 @@ package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,11 +42,11 @@ public class Oportunidade implements Serializable {
     private String descricao;
     @JoinColumn( name= "fk_areaDeInteresses", nullable = false)
     @OneToMany
-    private ArrayList< AreaDeInteresses > areaDeInteresses;
+    private List< AreaDeInteresses > areaDeInteresses;
     @OneToMany
-    private final ArrayList<Voluntario> voluntarios;
+    private final List<Voluntario> voluntarios;
 
-    public Oportunidade(int codigo, String nome, String descricao, ArrayList< AreaDeInteresses > areaDeInteresses) {
+    public Oportunidade(int codigo, String nome, String descricao, List< AreaDeInteresses > areaDeInteresses) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -82,11 +83,11 @@ public class Oportunidade implements Serializable {
         this.descricao = descricao;
     }
 
-    public ArrayList< AreaDeInteresses > getAreaDeInteresses() {
+    public List< AreaDeInteresses > getAreaDeInteresses() {
         return areaDeInteresses;
     }
 
-    public void setAreaDeInteresses(ArrayList< AreaDeInteresses >  areaDeInteresses ) {
+    public void setAreaDeInteresses(List< AreaDeInteresses >  areaDeInteresses ) {
         this.areaDeInteresses = areaDeInteresses;
     }
 

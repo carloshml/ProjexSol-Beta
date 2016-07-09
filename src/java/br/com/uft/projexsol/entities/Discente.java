@@ -6,7 +6,7 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,30 +27,25 @@ import javax.validation.constraints.Size;
 @Table(name= "discente")
 public class Discente extends Voluntario implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
     @JoinColumn( name="fk_curso", nullable = false)
     @OneToOne    
     private Curso curso;
     @JoinColumn( name="fk_disciplinas", nullable = false)
     @OneToMany
-    private ArrayList<Disciplina> disciplinas;
+    private List<Disciplina> disciplinas;
 
   
-    public Discente(int codigo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, Curso curso, ArrayList<AreaDeInteresses> areasDeInteresses, ArrayList<Disciplina> diciplinas) {
+    public Discente(int codigo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, Curso curso, List<AreaDeInteresses> areasDeInteresses, List<Disciplina> diciplinas) {
         super(codigo, nome, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
         this.curso = curso;
         this.disciplinas = diciplinas;
     }
 
-    public ArrayList<Disciplina> getDisciplinas() {
+    public List<Disciplina> getDisciplinas() {
         return disciplinas;
     }
 
-    public void setDisciplinas(ArrayList<Disciplina> disciplinas) {
+    public void setDisciplinas(List<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
     }
 

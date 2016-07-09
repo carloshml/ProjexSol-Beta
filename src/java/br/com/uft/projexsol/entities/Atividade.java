@@ -7,7 +7,7 @@ package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 import javax.ejb.Timeout;
 import javax.persistence.Basic;
@@ -18,6 +18,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,21 +42,21 @@ public class Atividade implements Serializable {
     private int codigo;
     @Size(max = 60)
     private String nomeAtividae;
-    @Size(max = 60)
-    @OneToMany(mappedBy = "Atividade")
-    private ArrayList<Beneficiario> beneficiarios;
-    @JoinColumn( name= "fk_endereco", nullable = false)
+    @JoinColumn( name = "fk_beneficiarios", nullable = false)
     @OneToMany
+    private List<Beneficiario> beneficiarios;
+    @JoinColumn( name= "fk_endereco", nullable = false)
+    @OneToOne
     private Endereco local;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp horario;
+    
+    private String horario;
     @Temporal(TemporalType.DATE)
     @NotNull
     private Date dataInicio;
     @Temporal(TemporalType.DATE)
     private Date dataFinal;
 
-    public Atividade(int codigo, String nomeAtividae, ArrayList<Beneficiario> beneficiarios, Endereco local, Timestamp horario, Date dataInicio, Date dataFinal) {
+    public Atividade(int codigo, String nomeAtividae, List<Beneficiario> beneficiarios, Endereco local, String horario, Date dataInicio, Date dataFinal) {
         this.codigo = codigo;
         this.nomeAtividae = nomeAtividae;
         this.beneficiarios = beneficiarios;
@@ -81,11 +82,11 @@ public class Atividade implements Serializable {
         this.nomeAtividae = nomeAtividae;
     }
 
-    public ArrayList<Beneficiario> getBeneficiarios() {
+    public List<Beneficiario> getBeneficiarios() {
         return beneficiarios;
     }
 
-    public void setBeneficiarios(ArrayList<Beneficiario> beneficiarios) {
+    public void setBeneficiarios(List<Beneficiario> beneficiarios) {
         this.beneficiarios = beneficiarios;
     }
 
@@ -97,11 +98,11 @@ public class Atividade implements Serializable {
         this.local = local;
     }
 
-    public Timestamp getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Timestamp horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 

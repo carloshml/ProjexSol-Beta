@@ -21,14 +21,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name= "administrador")
 public class Administrador  extends Voluntario implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-
-   
-
    
 
     public Administrador(int codigo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco) {

@@ -6,7 +6,7 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,10 +51,10 @@ public class ITS implements Serializable {
     @Size(max = 60)
     private String telefone;
     @OneToMany
-    private ArrayList<AreaDeInteresses> areasDeInteresses;
+    private List<AreaDeInteresses> areasDeInteresses;
 
 
-    public ITS(int codigo, String nome, String cnpj, String tipoInstituicao, Endereco endereco, String email, String diretor, String funcao, String telefone, ArrayList<AreaDeInteresses> areasDeInteresses) {
+    public ITS(int codigo, String nome, String cnpj, String tipoInstituicao, Endereco endereco, String email, String diretor, String funcao, String telefone, List<AreaDeInteresses> areasDeInteresses) {
         this.codigo = codigo;
         this.nome = nome;
         this.cnpj = cnpj;
@@ -139,11 +139,11 @@ public class ITS implements Serializable {
         this.telefone = telefone;
     }
 
-    public ArrayList<AreaDeInteresses> getAreasDeInteresses() {
+    public List<AreaDeInteresses> getAreasDeInteresses() {
         return areasDeInteresses;
     }
 
-    public void setAreasDeInteresses(ArrayList<AreaDeInteresses> areasDeInteresses) {
+    public void setAreasDeInteresses(List<AreaDeInteresses> areasDeInteresses) {
         this.areasDeInteresses = areasDeInteresses;
     }
 
