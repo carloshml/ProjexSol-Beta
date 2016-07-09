@@ -39,7 +39,7 @@ public class Acao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Integer id;   
     @Column(name = "codigo")
     private int codigo;
     @Size(max = 120)
@@ -63,7 +63,15 @@ public class Acao implements Serializable {
     @JoinColumn( name= "fk_atividade", nullable = false)
     @OneToMany
     private List<Atividade> atividades;
+    
+     public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public Acao() {
     }
 

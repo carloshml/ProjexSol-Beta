@@ -65,7 +65,13 @@ public class Atividade implements Serializable {
         this.dataInicio = dataInicio;
         this.dataFinal = dataFinal;
     }
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public int getCodigo() {
         return codigo;
     }

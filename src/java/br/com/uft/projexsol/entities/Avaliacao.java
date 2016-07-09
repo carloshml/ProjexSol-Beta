@@ -29,14 +29,20 @@ public class Avaliacao implements Serializable {
     private Integer id;
     @Size(max = 200)
     private String descricao; 
+    
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
     /**
      * @return the descricao
      */
     public String getDescricao() {
         return descricao;
     }
-
     /**
      * @param descricao the descricao to set
      */

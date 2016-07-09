@@ -67,6 +67,13 @@ public class ITS implements Serializable {
         this.areasDeInteresses = areasDeInteresses;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public int getCodigo() {
         return codigo;
     }

@@ -150,5 +150,19 @@ public class Voluntario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<AreaDeInteresses> getAreasDeInteresses() {
+        return areasDeInteresses;
+    }
+
+    public void setAreasDeInteresses(List<AreaDeInteresses> areasDeInteresses) {
+        this.areasDeInteresses = areasDeInteresses;
+    }
 }

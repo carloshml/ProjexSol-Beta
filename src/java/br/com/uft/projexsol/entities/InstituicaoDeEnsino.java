@@ -33,7 +33,6 @@ public class InstituicaoDeEnsino implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-
     private int codigo;
     @Size(max = 120)
     private String nome;
@@ -60,6 +59,14 @@ public class InstituicaoDeEnsino implements Serializable {
         this.telefone = telefone;
         this.estado = estado;
         departamentos = new ArrayList<>();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEstado() {

@@ -39,15 +39,20 @@ public class Departamento implements Serializable {
     @OneToMany
     private List<Curso> cursos;
 
-    public Departamento() {
-    }
-
     public Departamento(int codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
         this.cursos = new ArrayList<Curso>();
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public void addCurso(Curso curso) {
         cursos.add(curso);
     }

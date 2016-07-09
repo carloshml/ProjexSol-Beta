@@ -28,6 +28,8 @@ public class DetalhesProjeto implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+
+
     @Size(max = 60)
     private int codigo;
     @Size(max = 600)
@@ -55,7 +57,13 @@ public class DetalhesProjeto implements Serializable {
         this.bibliografiaBasica = bibliografiaBasica;
         this.convenio = convenio;
     }
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public int getCodigo() {
         return codigo;
     }

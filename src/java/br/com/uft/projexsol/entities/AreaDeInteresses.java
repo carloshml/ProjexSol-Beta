@@ -40,6 +40,14 @@ public class AreaDeInteresses implements Serializable {
         this.descricao = descricao;
     }
 
+        public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public int getCodigo() {
         return codigo;
     }

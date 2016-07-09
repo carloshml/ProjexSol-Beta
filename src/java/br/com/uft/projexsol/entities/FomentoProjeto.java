@@ -38,6 +38,13 @@ public class FomentoProjeto implements Serializable {
         this.origens = origens;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public String getDescricao() {
         return descricao;
     }

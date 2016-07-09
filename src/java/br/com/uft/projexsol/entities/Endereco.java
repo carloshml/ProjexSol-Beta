@@ -53,6 +53,13 @@ public class Endereco implements Serializable {
         this.cep = cep;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public int getCodigo() {
         return codigo;
     }

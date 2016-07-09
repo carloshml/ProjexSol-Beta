@@ -37,7 +37,7 @@ public class Projeto implements Serializable  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Integer id;  
     private int codigo;
     @JoinColumn(  name= "fk_voluntario", nullable = false )
     @OneToOne
@@ -83,6 +83,22 @@ public class Projeto implements Serializable  {
     @OneToMany
     private List<Avaliacao> avaliacoesProjeto;
 
+      public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public boolean isAutorizado() {
+        return autorizado;
+    }
+
+    public void setAutorizado(boolean autorizado) {
+        this.autorizado = autorizado;
+    }
+    
     public List<Avaliacao> getAvaliacoesProjeto() {
         return avaliacoesProjeto;
     }

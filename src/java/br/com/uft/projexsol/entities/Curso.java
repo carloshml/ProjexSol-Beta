@@ -28,19 +28,26 @@ public class Curso implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+
     @Size(max = 60)
     private int codigo;
     @Size(max = 60)
     private String nome;
-
-    public Curso() {
-    }
 
     public Curso(String nome, int codigo) {
         this.nome = nome;
         this.codigo = codigo;
     }
 
+    
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }
