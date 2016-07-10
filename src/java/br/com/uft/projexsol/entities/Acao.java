@@ -10,10 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -71,9 +69,7 @@ public class Acao implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    
-    public Acao() {
-    }
+
 
     public Acao(int codigo, String nome, Date dataInicial, Date dataFinal, String tipo, String descricao) {
         this.codigo = codigo;
@@ -83,6 +79,9 @@ public class Acao implements Serializable {
         this.tipo = tipo;
         this.descricao = descricao;
         atividades = new ArrayList<>();
+    }
+        
+    public Acao() {
     }
 
     public int getCodigo() {

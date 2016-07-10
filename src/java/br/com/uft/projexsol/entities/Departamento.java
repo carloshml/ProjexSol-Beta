@@ -6,7 +6,6 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -39,11 +38,15 @@ public class Departamento implements Serializable {
     @OneToMany
     private List<Curso> cursos;
 
-    public Departamento(int codigo, String nome) {
+    public Departamento(Integer id, int codigo, String nome, List<Curso> cursos) {
+        this.id = id;
         this.codigo = codigo;
         this.nome = nome;
-        this.cursos = new ArrayList<Curso>();
+        this.cursos = cursos;
     }
+ public Departamento(){
+ }
+
 
     public Integer getId() {
         return id;

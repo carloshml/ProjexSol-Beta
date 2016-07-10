@@ -7,24 +7,16 @@ package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 /**
  *
  * @author PedroLima
  */
 @Entity
-@Table(name= "discente")
 public class Discente extends Voluntario implements Serializable {
 
     @JoinColumn( name="fk_curso", nullable = false)
@@ -34,13 +26,20 @@ public class Discente extends Voluntario implements Serializable {
     @OneToMany
     private List<Disciplina> disciplinas;
 
-  
-    public Discente(int codigo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, Curso curso, List<AreaDeInteresses> areasDeInteresses, List<Disciplina> diciplinas) {
-        super(codigo, nome, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
+    public Discente(Curso curso, List<Disciplina> disciplinas, Integer id, String nome, int codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
+        super(id, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
         this.curso = curso;
-        this.disciplinas = diciplinas;
+        this.disciplinas = disciplinas;
     }
 
+    public Discente(Curso curso, List<Disciplina> disciplinas) {
+        this.curso = curso;
+        this.disciplinas = disciplinas;
+    }
+
+    public Discente() {
+    }
+    
     public List<Disciplina> getDisciplinas() {
         return disciplinas;
     }

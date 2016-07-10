@@ -34,11 +34,16 @@ public class AreaDeInteresses implements Serializable {
     @Size(max = 200)
     private String descricao;
 
-    public AreaDeInteresses(int codigo, String nome, String descricao) {
+    public AreaDeInteresses(Integer id, int codigo, String nome, String descricao) {
+        this.id = id;
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
     }
+    public AreaDeInteresses()
+    {
+    }
+
 
         public Integer getId() {
         return id;

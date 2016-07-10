@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Date;
-import javax.ejb.Timeout;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +30,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name= "atividade")
 public class Atividade implements Serializable {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -55,8 +53,9 @@ public class Atividade implements Serializable {
     private Date dataInicio;
     @Temporal(TemporalType.DATE)
     private Date dataFinal;
-
-    public Atividade(int codigo, String nomeAtividae, List<Beneficiario> beneficiarios, Endereco local, String horario, Date dataInicio, Date dataFinal) {
+    
+    public Atividade(Integer id, int codigo, String nomeAtividae, List<Beneficiario> beneficiarios, Endereco local, String horario, Date dataInicio, Date dataFinal) {
+        this.id = id;
         this.codigo = codigo;
         this.nomeAtividae = nomeAtividae;
         this.beneficiarios = beneficiarios;
@@ -65,67 +64,70 @@ public class Atividade implements Serializable {
         this.dataInicio = dataInicio;
         this.dataFinal = dataFinal;
     }
+    public Atividade(){
+    }
+    
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
     public int getCodigo() {
         return codigo;
     }
-
+    
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-
+    
     public String getNomeAtividae() {
         return nomeAtividae;
     }
-
+    
     public void setNomeAtividae(String nomeAtividae) {
         this.nomeAtividae = nomeAtividae;
     }
-
+    
     public List<Beneficiario> getBeneficiarios() {
         return beneficiarios;
     }
-
+    
     public void setBeneficiarios(List<Beneficiario> beneficiarios) {
         this.beneficiarios = beneficiarios;
     }
-
+    
     public Endereco getLocal() {
         return local;
     }
-
+    
     public void setLocal(Endereco local) {
         this.local = local;
     }
-
+    
     public String getHorario() {
         return horario;
     }
-
+    
     public void setHorario(String horario) {
         this.horario = horario;
     }
-
+    
     public Date getDataInicio() {
         return dataInicio;
     }
-
+    
     public void setDataInicio(Date dataInicio) {
         this.dataInicio = dataInicio;
     }
-
+    
     public Date getDataFinal() {
         return dataFinal;
     }
-
+    
     public void setDataFinal(Date dataFinal) {
         this.dataFinal = dataFinal;
     }
-
+    
 }

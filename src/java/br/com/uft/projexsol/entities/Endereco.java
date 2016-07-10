@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "endereco")
 public class Endereco implements Serializable {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -42,76 +42,79 @@ public class Endereco implements Serializable {
     private String cep;
     @Size(max = 5)
     private String numero;
-
-    public Endereco(int codigo, String logradouro, String numero, String bairro, String cidade, String uf, String cep) {
+    
+    public Endereco(Integer id, int codigo, String logradouro, String bairro, String uf, String cidade, String cep, String numero) {
+        this.id = id;
         this.codigo = codigo;
         this.logradouro = logradouro;
-        this.numero = numero;
         this.bairro = bairro;
-        this.cidade = cidade;
         this.uf = uf;
+        this.cidade = cidade;
         this.cep = cep;
+        this.numero = numero;
     }
-
+    public Endereco(){
+    }
+    
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
     public int getCodigo() {
         return codigo;
     }
-
+    
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-
+    
     public String getLogradouro() {
         return logradouro;
     }
-
+    
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
     }
-
+    
     public String getBairro() {
         return bairro;
     }
-
+    
     public void setBairro(String bairro) {
         this.bairro = bairro;
     }
-
+    
     public String getUf() {
         return uf;
     }
-
+    
     public void setUf(String uf) {
         this.uf = uf;
     }
-
+    
     public String getCidade() {
         return cidade;
     }
-
+    
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
-
+    
     public String getCep() {
         return cep;
     }
-
+    
     public void setCep(String cep) {
         this.cep = cep;
     }
-
+    
     public String getNumero() {
         return numero;
     }
-
+    
     public void setNumero(String numero) {
         this.numero = numero;
     }

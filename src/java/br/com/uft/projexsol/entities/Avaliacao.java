@@ -29,7 +29,13 @@ public class Avaliacao implements Serializable {
     private Integer id;
     @Size(max = 200)
     private String descricao; 
-    
+
+    public Avaliacao(Integer id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
+    public Avaliacao(){
+    }
     public Integer getId() {
         return id;
     }

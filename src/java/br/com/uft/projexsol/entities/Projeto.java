@@ -8,7 +8,6 @@ package br.com.uft.projexsol.entities;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Date;
-import javax.faces.bean.ManagedBean;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -82,6 +81,32 @@ public class Projeto implements Serializable  {
     private ITS instituicaoTerceiroSetor;
     @OneToMany
     private List<Avaliacao> avaliacoesProjeto;
+
+    public Projeto(Integer id, int codigo, Voluntario gerenteProjeto, double custoProjeto, DetalhesProjeto detalhes, Date dataCriacao, String linhaProgramatica, String areaDirex, String linhaDirex, String numOrdemDirex, String numRegistroDirex, Date dataInicial, Date dataFinal, List<AreaDeInteresses> areasDeInteresses, FomentoProjeto dadosFomento, List<Acao> acoes, boolean autorizado, List<Oportunidade> oportunidades, ITS instituicaoTerceiroSetor, List<Avaliacao> avaliacoesProjeto) {
+        this.id = id;
+        this.codigo = codigo;
+        this.gerenteProjeto = gerenteProjeto;
+        this.custoProjeto = custoProjeto;
+        this.detalhes = detalhes;
+        this.dataCriacao = dataCriacao;
+        this.linhaProgramatica = linhaProgramatica;
+        this.areaDirex = areaDirex;
+        this.linhaDirex = linhaDirex;
+        this.numOrdemDirex = numOrdemDirex;
+        this.numRegistroDirex = numRegistroDirex;
+        this.dataInicial = dataInicial;
+        this.dataFinal = dataFinal;
+        this.areasDeInteresses = areasDeInteresses;
+        this.dadosFomento = dadosFomento;
+        this.acoes = acoes;
+        this.autorizado = autorizado;
+        this.oportunidades = oportunidades;
+        this.instituicaoTerceiroSetor = instituicaoTerceiroSetor;
+        this.avaliacoesProjeto = avaliacoesProjeto;
+    }
+    public Projeto(){
+        
+    }
 
       public Integer getId() {
         return id;

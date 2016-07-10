@@ -7,23 +7,15 @@ package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 /**
  *
  * @author aluno
  */
 @Entity
-@Table (name = "docente")
 public class Docente extends Voluntario implements Serializable{
 
     @JoinColumn( name= "fk_curso", nullable = false)
@@ -33,13 +25,19 @@ public class Docente extends Voluntario implements Serializable{
     @OneToOne
     private Departamento departamento;
 
-
-    public Docente(int codigo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, Curso curso, List<AreaDeInteresses> areasDeInteresses, Departamento departamento) {
-        super(codigo, nome, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
+    public Docente(Curso curso, Departamento departamento, Integer id, String nome, int codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
+        super(id, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
         this.curso = curso;
         this.departamento = departamento;
     }
 
+    public Docente(Curso curso, Departamento departamento) {
+        this.curso = curso;
+        this.departamento = departamento;
+    }
+
+    public Docente() {
+     }
     public Curso getCurso() {
         return curso;
     }

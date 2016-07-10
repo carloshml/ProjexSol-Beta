@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
@@ -29,43 +29,48 @@ public class Beneficiario implements Serializable {
     private Integer id;
     @Size(max = 60)
     private int codigo;
-    @Size(max = 60)    
+    @Size(max = 60)
     private String nomeCompleto;
-    @Size(max = 40)    
+    @Size(max = 40)
     private String rg;
-
-    public Beneficiario(int codigo, String nomeCompleto, String rg) {
+    
+    public Beneficiario(Integer id, int codigo, String nomeCompleto, String rg) {
+        this.id = id;
         this.codigo = codigo;
         this.nomeCompleto = nomeCompleto;
         this.rg = rg;
     }
+    public Beneficiario(){
+        
+    }
+    
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
-     public int getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
-
+    
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-
+    
     public String getNomeCompleto() {
         return nomeCompleto;
     }
-
+    
     public void setNomeCompleto(String nomeCompleto) {
         this.nomeCompleto = nomeCompleto;
     }
-
+    
     public String getRg() {
         return rg;
     }
-
+    
     public void setRg(String rg) {
         this.rg = rg;
     }

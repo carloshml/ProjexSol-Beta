@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
@@ -22,28 +22,31 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name= "curso")
 public class Curso implements Serializable {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-
+    
     @Size(max = 60)
     private int codigo;
     @Size(max = 60)
     private String nome;
-
-    public Curso(String nome, int codigo) {
-        this.nome = nome;
+    
+    public Curso(Integer id, int codigo, String nome) {
+        this.id = id;
         this.codigo = codigo;
+        this.nome = nome;
     }
-
+    public Curso(){
+    }
+    
     
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
@@ -51,15 +54,15 @@ public class Curso implements Serializable {
     public String getNome() {
         return nome;
     }
-
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    
     public int getCodigo() {
         return codigo;
     }
-
+    
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
