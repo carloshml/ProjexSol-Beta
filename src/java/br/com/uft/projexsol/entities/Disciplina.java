@@ -6,9 +6,12 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,19 +29,19 @@ import javax.validation.constraints.Size;
 public class Disciplina implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     @Size(max = 60)
     private int codigo;
-    @Size(max = 60)
+    @Size(max = 100)
     private String nome;
-    @JoinColumn( name= "fk_curso", nullable = false )
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name="CURSO_ID", nullable=true)
     private Curso curso;
-    @JoinColumn( name= "fk_docente", nullable = false )
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name="DOCENTE_ID", nullable=true)
     private Docente docente;
     
     public Disciplina(Integer id, int codigo, String nome, Curso curso, Docente docente) {
@@ -90,4 +93,37 @@ public class Disciplina implements Serializable {
     public void setDocente(Docente docente) {
         this.docente = docente;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Disciplina other = (Disciplina) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Disciplina{" + "nome=" + this.nome + ", ministrada no curso=" + this.curso + ", pelo docente docente=" + this.docente + '}';
+    }
+
+    
+    
 }

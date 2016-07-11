@@ -6,6 +6,7 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ import javax.validation.constraints.Size;
 public class Endereco implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
@@ -118,4 +119,35 @@ public class Endereco implements Serializable {
     public void setNumero(String numero) {
         this.numero = numero;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Endereco other = (Endereco) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Endereco{" + "codigo=" + codigo + ", logradouro=" + logradouro + ", bairro=" + bairro + ", uf=" + uf + ", cidade=" + cidade + ", cep=" + cep + ", numero=" + numero + '}';
+    }
+    
 }

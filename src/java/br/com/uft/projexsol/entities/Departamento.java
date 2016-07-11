@@ -7,12 +7,17 @@ package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -26,7 +31,7 @@ import javax.validation.constraints.Size;
 public class Departamento implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
@@ -34,8 +39,8 @@ public class Departamento implements Serializable {
     private int codigo;
     @Size(max = 60)
     private String nome;
-    @Size(max = 40)
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="DEPARTAMENTO_TEM_CURSOS", joinColumns={ @JoinColumn(name="DEPARTAMENTO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="CURSO_ID", referencedColumnName="id")})
     private List<Curso> cursos;
 
     public Departamento(Integer id, int codigo, String nome, List<Curso> cursos) {
@@ -82,6 +87,36 @@ public class Departamento implements Serializable {
 
     public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Departamento other = (Departamento) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Departamento{" + "nome=" + nome + '}';
     }
 
 }

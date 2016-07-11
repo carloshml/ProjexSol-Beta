@@ -9,13 +9,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,7 +38,7 @@ public class Acao implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;   
@@ -43,7 +47,6 @@ public class Acao implements Serializable {
     @Size(max = 120)
     @Column(name = "nome")
     private String nome;
-    @Basic(optional = false)
     @NotNull
     @Column(name = "dataInicial")
     @Temporal(TemporalType.DATE)
@@ -58,8 +61,8 @@ public class Acao implements Serializable {
     @Size(max = 200)
     @Column(name = "descricao")
     private String descricao;
-    @JoinColumn( name= "fk_atividade", nullable = false)
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="ACAO_TEM_ATIVIDADES", joinColumns={ @JoinColumn(name="ACAO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="ATIVIDADES_ID", referencedColumnName="id")})
     private List<Atividade> atividades;
     
      public Integer getId() {
@@ -138,6 +141,36 @@ public class Acao implements Serializable {
 
     public void setAtividades(List<Atividade> atividades) {
         this.atividades = atividades;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Acao other = (Acao) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Acao{" + "nome=" + nome + ", descricao=" + descricao + '}';
     }
 
 }

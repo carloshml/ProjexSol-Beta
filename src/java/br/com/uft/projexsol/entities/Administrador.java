@@ -16,8 +16,8 @@ import javax.persistence.Entity;
 @Entity
 public class Administrador  extends Voluntario implements Serializable{
 
-    public Administrador(Integer id, String nome, int codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
-        super(id, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
+    public Administrador(Curso curso, List<Disciplina> disciplinas, Integer id, String ativo, String nome, int codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
+        super(id, ativo, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
     }
 
     public Administrador() {

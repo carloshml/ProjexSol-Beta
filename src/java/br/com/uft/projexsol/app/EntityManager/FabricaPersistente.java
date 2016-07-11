@@ -10,6 +10,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 import sun.swing.SwingUtilities2;
 
+
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
  * object.

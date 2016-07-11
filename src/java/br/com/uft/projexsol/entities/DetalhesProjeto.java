@@ -6,6 +6,7 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,12 +25,10 @@ import javax.validation.constraints.Size;
 public class DetalhesProjeto implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    
-    
     @Size(max = 60)
     private int codigo;
     @Size(max = 600)
@@ -131,4 +130,35 @@ public class DetalhesProjeto implements Serializable {
     public void setConvenio(String convenio) {
         this.convenio = convenio;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DetalhesProjeto other = (DetalhesProjeto) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "DetalhesProjeto{" + "justificativa=" + justificativa + ", objetivos=" + objetivos + ", metas=" + metas + ", metodologia=" + metodologia + ", sistemaDeAvaliacao=" + sistemaDeAvaliacao + ", bibliografiaBasica=" + bibliografiaBasica + ", convenio=" + convenio + '}';
+    }
+    
 }

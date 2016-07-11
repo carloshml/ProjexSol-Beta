@@ -8,13 +8,17 @@ package br.com.uft.projexsol.entities;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -32,19 +36,18 @@ import javax.validation.constraints.Size;
 public class Atividade implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 60)
     private int codigo;
     @Size(max = 60)
     private String nomeAtividae;
-    @JoinColumn( name = "fk_beneficiarios", nullable = false)
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="ATIVIDADE_TEM_BENEFICIARIOS", joinColumns={ @JoinColumn(name="ATIVIDADE_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="BENEFICIARIOS_ID", referencedColumnName="id")})
     private List<Beneficiario> beneficiarios;
-    @JoinColumn( name= "fk_endereco", nullable = false)
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name="ENDERECO_ID", nullable=true)
     private Endereco local;
     
     private String horario;
@@ -128,6 +131,36 @@ public class Atividade implements Serializable {
     
     public void setDataFinal(Date dataFinal) {
         this.dataFinal = dataFinal;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Atividade other = (Atividade) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Atividade{" + "nomeAtividae=" + nomeAtividae + '}';
     }
     
 }
