@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VoluntarioViewDlg" widgetVar="VoluntarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewVoluntarioTitle}">
+            <h:form id="VoluntarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{voluntarioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_ativo}"/>
+                        <h:outputText value="#{voluntarioController.selected.ativo}" title="#{bundle.ViewVoluntarioTitle_ativo}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_endereco}"/>
+                        <h:outputText value="#{voluntarioController.selected.endereco}" title="#{bundle.ViewVoluntarioTitle_endereco}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_telefone}"/>
+                        <h:outputText value="#{voluntarioController.selected.telefone}" title="#{bundle.ViewVoluntarioTitle_telefone}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_celular}"/>
+                        <h:outputText value="#{voluntarioController.selected.celular}" title="#{bundle.ViewVoluntarioTitle_celular}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_email}"/>
+                        <h:outputText value="#{voluntarioController.selected.email}" title="#{bundle.ViewVoluntarioTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_nome}"/>
+                        <h:outputText value="#{voluntarioController.selected.nome}" title="#{bundle.ViewVoluntarioTitle_nome}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_codigo}"/>
+                        <h:outputText value="#{voluntarioController.selected.codigo}" title="#{bundle.ViewVoluntarioTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_cpf}"/>
+                        <h:outputText value="#{voluntarioController.selected.cpf}" title="#{bundle.ViewVoluntarioTitle_cpf}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_rg}"/>
+                        <h:outputText value="#{voluntarioController.selected.rg}" title="#{bundle.ViewVoluntarioTitle_rg}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_login}"/>
+                        <h:outputText value="#{voluntarioController.selected.login}" title="#{bundle.ViewVoluntarioTitle_login}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_senha}"/>
+                        <h:outputText value="#{voluntarioController.selected.senha}" title="#{bundle.ViewVoluntarioTitle_senha}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioLabel_id}"/>
+                        <h:outputText value="#{voluntarioController.selected.id}" title="#{bundle.ViewVoluntarioTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="VoluntarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalhesProjetoViewDlg" widgetVar="DetalhesProjetoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDetalhesProjetoTitle}">
+            <h:form id="DetalhesProjetoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalhesProjetoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDetalhesProjetoLabel_id}"/>
+                        <h:outputText value="#{detalhesProjetoController.selected.id}" title="#{bundle.ViewDetalhesProjetoTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewDetalhesProjetoLabel_justificativa}"/>
+                        <h:outputText value="#{detalhesProjetoController.selected.justificativa}" title="#{bundle.ViewDetalhesProjetoTitle_justificativa}"/>
+                        <h:outputText value="#{bundle.ViewDetalhesProjetoLabel_objetivos}"/>
+                        <h:outputText value="#{detalhesProjetoController.selected.objetivos}" title="#{bundle.ViewDetalhesProjetoTitle_objetivos}"/>
+                        <h:outputText value="#{bundle.ViewDetalhesProjetoLabel_metas}"/>
+                        <h:outputText value="#{detalhesProjetoController.selected.metas}" title="#{bundle.ViewDetalhesProjetoTitle_metas}"/>
+                        <h:outputText value="#{bundle.ViewDetalhesProjetoLabel_metodologia}"/>
+                        <h:outputText value="#{detalhesProjetoController.selected.metodologia}" title="#{bundle.ViewDetalhesProjetoTitle_metodologia}"/>
+                        <h:outputText value="#{bundle.ViewDetalhesProjetoLabel_sistemaDeAvaliacao}"/>
+                        <h:outputText value="#{detalhesProjetoController.selected.sistemaDeAvaliacao}" title="#{bundle.ViewDetalhesProjetoTitle_sistemaDeAvaliacao}"/>
+                        <h:outputText value="#{bundle.ViewDetalhesProjetoLabel_bibliografiaBasica}"/>
+                        <h:outputText value="#{detalhesProjetoController.selected.bibliografiaBasica}" title="#{bundle.ViewDetalhesProjetoTitle_bibliografiaBasica}"/>
+                        <h:outputText value="#{bundle.ViewDetalhesProjetoLabel_convenio}"/>
+                        <h:outputText value="#{detalhesProjetoController.selected.convenio}" title="#{bundle.ViewDetalhesProjetoTitle_convenio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DetalhesProjetoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

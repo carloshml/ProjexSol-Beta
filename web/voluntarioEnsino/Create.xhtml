@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VoluntarioEnsinoCreateDlg" widgetVar="VoluntarioEnsinoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateVoluntarioEnsinoTitle}">
+            <h:form id="VoluntarioEnsinoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{voluntarioEnsinoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_curso}" for="curso" />
+                        <p:selectOneMenu id="curso" value="#{voluntarioEnsinoController.selected.curso}" >
+                            <f:selectItems value="#{cursoController.itemsAvailableSelectOne}"
+                                           var="cursoItem"
+                                           itemValue="#{cursoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_departamento}" for="departamento" />
+                        <p:selectOneMenu id="departamento" value="#{voluntarioEnsinoController.selected.departamento}" >
+                            <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
+                                           var="departamentoItem"
+                                           itemValue="#{departamentoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_ativo}" for="ativo" />
+                        <p:inputText id="ativo" value="#{voluntarioEnsinoController.selected.ativo}" title="#{bundle.CreateVoluntarioEnsinoTitle_ativo}" />
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_endereco}" for="endereco" />
+                        <p:selectOneMenu id="endereco" value="#{voluntarioEnsinoController.selected.endereco}" >
+                            <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
+                                           var="enderecoItem"
+                                           itemValue="#{enderecoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{voluntarioEnsinoController.selected.telefone}" title="#{bundle.CreateVoluntarioEnsinoTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_celular}" for="celular" />
+                        <p:inputText id="celular" value="#{voluntarioEnsinoController.selected.celular}" title="#{bundle.CreateVoluntarioEnsinoTitle_celular}" />
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{voluntarioEnsinoController.selected.email}" title="#{bundle.CreateVoluntarioEnsinoTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{voluntarioEnsinoController.selected.nome}" title="#{bundle.CreateVoluntarioEnsinoTitle_nome}" />
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{voluntarioEnsinoController.selected.codigo}" title="#{bundle.CreateVoluntarioEnsinoTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_cpf}" for="cpf" />
+                        <p:inputText id="cpf" value="#{voluntarioEnsinoController.selected.cpf}" title="#{bundle.CreateVoluntarioEnsinoTitle_cpf}" />
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_rg}" for="rg" />
+                        <p:inputText id="rg" value="#{voluntarioEnsinoController.selected.rg}" title="#{bundle.CreateVoluntarioEnsinoTitle_rg}" />
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{voluntarioEnsinoController.selected.login}" title="#{bundle.CreateVoluntarioEnsinoTitle_login}" />
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_senha}" for="senha" />
+                        <p:inputText id="senha" value="#{voluntarioEnsinoController.selected.senha}" title="#{bundle.CreateVoluntarioEnsinoTitle_senha}" />
+                        <p:outputLabel value="#{bundle.CreateVoluntarioEnsinoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{voluntarioEnsinoController.selected.id}" title="#{bundle.CreateVoluntarioEnsinoTitle_id}" required="true" requiredMessage="#{bundle.CreateVoluntarioEnsinoRequiredMessage_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{voluntarioEnsinoController.create}" value="#{bundle.Save}" update="display,:VoluntarioEnsinoListForm:datalist,:growl" oncomplete="handleSubmit(args,'VoluntarioEnsinoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VoluntarioEnsinoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

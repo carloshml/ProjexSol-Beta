@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VoluntarioEnsinoViewDlg" widgetVar="VoluntarioEnsinoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewVoluntarioEnsinoTitle}">
+            <h:form id="VoluntarioEnsinoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{voluntarioEnsinoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_curso}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.curso}" title="#{bundle.ViewVoluntarioEnsinoTitle_curso}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_departamento}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.departamento}" title="#{bundle.ViewVoluntarioEnsinoTitle_departamento}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_ativo}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.ativo}" title="#{bundle.ViewVoluntarioEnsinoTitle_ativo}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_endereco}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.endereco}" title="#{bundle.ViewVoluntarioEnsinoTitle_endereco}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_telefone}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.telefone}" title="#{bundle.ViewVoluntarioEnsinoTitle_telefone}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_celular}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.celular}" title="#{bundle.ViewVoluntarioEnsinoTitle_celular}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_email}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.email}" title="#{bundle.ViewVoluntarioEnsinoTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_nome}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.nome}" title="#{bundle.ViewVoluntarioEnsinoTitle_nome}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_codigo}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.codigo}" title="#{bundle.ViewVoluntarioEnsinoTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_cpf}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.cpf}" title="#{bundle.ViewVoluntarioEnsinoTitle_cpf}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_rg}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.rg}" title="#{bundle.ViewVoluntarioEnsinoTitle_rg}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_login}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.login}" title="#{bundle.ViewVoluntarioEnsinoTitle_login}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_senha}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.senha}" title="#{bundle.ViewVoluntarioEnsinoTitle_senha}"/>
+                        <h:outputText value="#{bundle.ViewVoluntarioEnsinoLabel_id}"/>
+                        <h:outputText value="#{voluntarioEnsinoController.selected.id}" title="#{bundle.ViewVoluntarioEnsinoTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="VoluntarioEnsinoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

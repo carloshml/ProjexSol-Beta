@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InstituicaoDeEnsinoCreateDlg" widgetVar="InstituicaoDeEnsinoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInstituicaoDeEnsinoTitle}">
+            <h:form id="InstituicaoDeEnsinoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{instituicaoDeEnsinoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInstituicaoDeEnsinoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{instituicaoDeEnsinoController.selected.id}" title="#{bundle.CreateInstituicaoDeEnsinoTitle_id}" required="true" requiredMessage="#{bundle.CreateInstituicaoDeEnsinoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateInstituicaoDeEnsinoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{instituicaoDeEnsinoController.selected.codigo}" title="#{bundle.CreateInstituicaoDeEnsinoTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateInstituicaoDeEnsinoLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{instituicaoDeEnsinoController.selected.nome}" title="#{bundle.CreateInstituicaoDeEnsinoTitle_nome}" />
+                        <p:outputLabel value="#{bundle.CreateInstituicaoDeEnsinoLabel_cnpj}" for="cnpj" />
+                        <p:inputText id="cnpj" value="#{instituicaoDeEnsinoController.selected.cnpj}" title="#{bundle.CreateInstituicaoDeEnsinoTitle_cnpj}" />
+                        <p:outputLabel value="#{bundle.CreateInstituicaoDeEnsinoLabel_endereco}" for="endereco" />
+                        <p:selectOneMenu id="endereco" value="#{instituicaoDeEnsinoController.selected.endereco}" >
+                            <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
+                                           var="enderecoItem"
+                                           itemValue="#{enderecoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInstituicaoDeEnsinoLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{instituicaoDeEnsinoController.selected.email}" title="#{bundle.CreateInstituicaoDeEnsinoTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateInstituicaoDeEnsinoLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{instituicaoDeEnsinoController.selected.telefone}" title="#{bundle.CreateInstituicaoDeEnsinoTitle_telefone}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{instituicaoDeEnsinoController.create}" value="#{bundle.Save}" update="display,:InstituicaoDeEnsinoListForm:datalist,:growl" oncomplete="handleSubmit(args,'InstituicaoDeEnsinoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InstituicaoDeEnsinoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

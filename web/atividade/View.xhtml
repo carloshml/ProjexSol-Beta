@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AtividadeViewDlg" widgetVar="AtividadeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAtividadeTitle}">
+            <h:form id="AtividadeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{atividadeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAtividadeLabel_id}"/>
+                        <h:outputText value="#{atividadeController.selected.id}" title="#{bundle.ViewAtividadeTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewAtividadeLabel_codigo}"/>
+                        <h:outputText value="#{atividadeController.selected.codigo}" title="#{bundle.ViewAtividadeTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewAtividadeLabel_nomeAtividae}"/>
+                        <h:outputText value="#{atividadeController.selected.nomeAtividae}" title="#{bundle.ViewAtividadeTitle_nomeAtividae}"/>
+                        <h:outputText value="#{bundle.ViewAtividadeLabel_local}"/>
+                        <h:outputText value="#{atividadeController.selected.local}" title="#{bundle.ViewAtividadeTitle_local}"/>
+                        <h:outputText value="#{bundle.ViewAtividadeLabel_horario}"/>
+                        <h:outputText value="#{atividadeController.selected.horario}" title="#{bundle.ViewAtividadeTitle_horario}"/>
+                        <h:outputText value="#{bundle.ViewAtividadeLabel_dataInicio}"/>
+                        <h:outputText value="#{atividadeController.selected.dataInicio}" title="#{bundle.ViewAtividadeTitle_dataInicio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAtividadeLabel_dataFinal}"/>
+                        <h:outputText value="#{atividadeController.selected.dataFinal}" title="#{bundle.ViewAtividadeTitle_dataFinal}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AtividadeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

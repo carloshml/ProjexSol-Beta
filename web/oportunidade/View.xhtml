@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OportunidadeViewDlg" widgetVar="OportunidadeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOportunidadeTitle}">
+            <h:form id="OportunidadeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{oportunidadeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOportunidadeLabel_id}"/>
+                        <h:outputText value="#{oportunidadeController.selected.id}" title="#{bundle.ViewOportunidadeTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewOportunidadeLabel_codigo}"/>
+                        <h:outputText value="#{oportunidadeController.selected.codigo}" title="#{bundle.ViewOportunidadeTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewOportunidadeLabel_nome}"/>
+                        <h:outputText value="#{oportunidadeController.selected.nome}" title="#{bundle.ViewOportunidadeTitle_nome}"/>
+                        <h:outputText value="#{bundle.ViewOportunidadeLabel_descricao}"/>
+                        <h:outputText value="#{oportunidadeController.selected.descricao}" title="#{bundle.ViewOportunidadeTitle_descricao}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OportunidadeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

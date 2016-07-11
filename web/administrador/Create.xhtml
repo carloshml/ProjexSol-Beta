@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdministradorCreateDlg" widgetVar="AdministradorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAdministradorTitle}">
+            <h:form id="AdministradorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{administradorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_ativo}" for="ativo" />
+                        <p:inputText id="ativo" value="#{administradorController.selected.ativo}" title="#{bundle.CreateAdministradorTitle_ativo}" />
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_endereco}" for="endereco" />
+                        <p:selectOneMenu id="endereco" value="#{administradorController.selected.endereco}" >
+                            <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
+                                           var="enderecoItem"
+                                           itemValue="#{enderecoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{administradorController.selected.telefone}" title="#{bundle.CreateAdministradorTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_celular}" for="celular" />
+                        <p:inputText id="celular" value="#{administradorController.selected.celular}" title="#{bundle.CreateAdministradorTitle_celular}" />
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{administradorController.selected.email}" title="#{bundle.CreateAdministradorTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{administradorController.selected.nome}" title="#{bundle.CreateAdministradorTitle_nome}" />
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{administradorController.selected.codigo}" title="#{bundle.CreateAdministradorTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_cpf}" for="cpf" />
+                        <p:inputText id="cpf" value="#{administradorController.selected.cpf}" title="#{bundle.CreateAdministradorTitle_cpf}" />
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_rg}" for="rg" />
+                        <p:inputText id="rg" value="#{administradorController.selected.rg}" title="#{bundle.CreateAdministradorTitle_rg}" />
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{administradorController.selected.login}" title="#{bundle.CreateAdministradorTitle_login}" />
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_senha}" for="senha" />
+                        <p:inputText id="senha" value="#{administradorController.selected.senha}" title="#{bundle.CreateAdministradorTitle_senha}" />
+                        <p:outputLabel value="#{bundle.CreateAdministradorLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{administradorController.selected.id}" title="#{bundle.CreateAdministradorTitle_id}" required="true" requiredMessage="#{bundle.CreateAdministradorRequiredMessage_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{administradorController.create}" value="#{bundle.Save}" update="display,:AdministradorListForm:datalist,:growl" oncomplete="handleSubmit(args,'AdministradorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AdministradorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

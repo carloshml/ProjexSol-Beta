@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ITSCreateDlg" widgetVar="ITSCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateITSTitle}">
+            <h:form id="ITSCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{iTSController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateITSLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{iTSController.selected.id}" title="#{bundle.CreateITSTitle_id}" required="true" requiredMessage="#{bundle.CreateITSRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateITSLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{iTSController.selected.codigo}" title="#{bundle.CreateITSTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateITSLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{iTSController.selected.nome}" title="#{bundle.CreateITSTitle_nome}" />
+                        <p:outputLabel value="#{bundle.CreateITSLabel_cnpj}" for="cnpj" />
+                        <p:inputText id="cnpj" value="#{iTSController.selected.cnpj}" title="#{bundle.CreateITSTitle_cnpj}" />
+                        <p:outputLabel value="#{bundle.CreateITSLabel_tipoInstituicao}" for="tipoInstituicao" />
+                        <p:inputText id="tipoInstituicao" value="#{iTSController.selected.tipoInstituicao}" title="#{bundle.CreateITSTitle_tipoInstituicao}" />
+                        <p:outputLabel value="#{bundle.CreateITSLabel_endereco}" for="endereco" />
+                        <p:selectOneMenu id="endereco" value="#{iTSController.selected.endereco}" >
+                            <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
+                                           var="enderecoItem"
+                                           itemValue="#{enderecoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateITSLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{iTSController.selected.email}" title="#{bundle.CreateITSTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateITSLabel_diretor}" for="diretor" />
+                        <p:inputText id="diretor" value="#{iTSController.selected.diretor}" title="#{bundle.CreateITSTitle_diretor}" />
+                        <p:outputLabel value="#{bundle.CreateITSLabel_funcao}" for="funcao" />
+                        <p:inputText id="funcao" value="#{iTSController.selected.funcao}" title="#{bundle.CreateITSTitle_funcao}" />
+                        <p:outputLabel value="#{bundle.CreateITSLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{iTSController.selected.telefone}" title="#{bundle.CreateITSTitle_telefone}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{iTSController.create}" value="#{bundle.Save}" update="display,:ITSListForm:datalist,:growl" oncomplete="handleSubmit(args,'ITSCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ITSCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

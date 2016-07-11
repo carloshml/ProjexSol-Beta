@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AcaoCreateDlg" widgetVar="AcaoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAcaoTitle}">
+            <h:form id="AcaoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{acaoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAcaoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{acaoController.selected.id}" title="#{bundle.CreateAcaoTitle_id}" required="true" requiredMessage="#{bundle.CreateAcaoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateAcaoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{acaoController.selected.codigo}" title="#{bundle.CreateAcaoTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateAcaoLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{acaoController.selected.nome}" title="#{bundle.CreateAcaoTitle_nome}" />
+                        <p:outputLabel value="#{bundle.CreateAcaoLabel_dataInicial}" for="dataInicial" />
+                        <p:calendar id="dataInicial" pattern="MM/dd/yyyy" value="#{acaoController.selected.dataInicial}" title="#{bundle.EditAcaoTitle_dataInicial}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateAcaoLabel_dataFinal}" for="dataFinal" />
+                        <p:calendar id="dataFinal" pattern="MM/dd/yyyy" value="#{acaoController.selected.dataFinal}" title="#{bundle.EditAcaoTitle_dataFinal}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateAcaoLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{acaoController.selected.tipo}" title="#{bundle.CreateAcaoTitle_tipo}" />
+                        <p:outputLabel value="#{bundle.CreateAcaoLabel_descricao}" for="descricao" />
+                        <p:inputText id="descricao" value="#{acaoController.selected.descricao}" title="#{bundle.CreateAcaoTitle_descricao}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{acaoController.create}" value="#{bundle.Save}" update="display,:AcaoListForm:datalist,:growl" oncomplete="handleSubmit(args,'AcaoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AcaoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

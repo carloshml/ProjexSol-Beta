@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DiscenteEditDlg" widgetVar="DiscenteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDiscenteTitle}">
+            <h:form id="DiscenteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{discenteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_matricula}" for="matricula" />
+                        <p:inputText id="matricula" value="#{discenteController.selected.matricula}" title="#{bundle.EditDiscenteTitle_matricula}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_curso}" for="curso" />
+                        <p:selectOneMenu id="curso" value="#{discenteController.selected.curso}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cursoController.itemsAvailableSelectOne}"
+                                           var="cursoItem"
+                                           itemValue="#{cursoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_departamento}" for="departamento" />
+                        <p:selectOneMenu id="departamento" value="#{discenteController.selected.departamento}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
+                                           var="departamentoItem"
+                                           itemValue="#{departamentoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_ativo}" for="ativo" />
+                        <p:inputText id="ativo" value="#{discenteController.selected.ativo}" title="#{bundle.EditDiscenteTitle_ativo}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_endereco}" for="endereco" />
+                        <p:selectOneMenu id="endereco" value="#{discenteController.selected.endereco}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
+                                           var="enderecoItem"
+                                           itemValue="#{enderecoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{discenteController.selected.telefone}" title="#{bundle.EditDiscenteTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_celular}" for="celular" />
+                        <p:inputText id="celular" value="#{discenteController.selected.celular}" title="#{bundle.EditDiscenteTitle_celular}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{discenteController.selected.email}" title="#{bundle.EditDiscenteTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{discenteController.selected.nome}" title="#{bundle.EditDiscenteTitle_nome}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{discenteController.selected.codigo}" title="#{bundle.EditDiscenteTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_cpf}" for="cpf" />
+                        <p:inputText id="cpf" value="#{discenteController.selected.cpf}" title="#{bundle.EditDiscenteTitle_cpf}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_rg}" for="rg" />
+                        <p:inputText id="rg" value="#{discenteController.selected.rg}" title="#{bundle.EditDiscenteTitle_rg}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{discenteController.selected.login}" title="#{bundle.EditDiscenteTitle_login}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_senha}" for="senha" />
+                        <p:inputText id="senha" value="#{discenteController.selected.senha}" title="#{bundle.EditDiscenteTitle_senha}" />
+                        <p:outputLabel value="#{bundle.EditDiscenteLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{discenteController.selected.id}" title="#{bundle.EditDiscenteTitle_id}" required="true" requiredMessage="#{bundle.EditDiscenteRequiredMessage_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{discenteController.update}" value="#{bundle.Save}" update="display,:DiscenteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DiscenteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DiscenteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

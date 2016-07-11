@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalhesProjetoEditDlg" widgetVar="DetalhesProjetoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDetalhesProjetoTitle}">
+            <h:form id="DetalhesProjetoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalhesProjetoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDetalhesProjetoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{detalhesProjetoController.selected.id}" title="#{bundle.EditDetalhesProjetoTitle_id}" required="true" requiredMessage="#{bundle.EditDetalhesProjetoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditDetalhesProjetoLabel_justificativa}" for="justificativa" />
+                        <p:inputText id="justificativa" value="#{detalhesProjetoController.selected.justificativa}" title="#{bundle.EditDetalhesProjetoTitle_justificativa}" />
+                        <p:outputLabel value="#{bundle.EditDetalhesProjetoLabel_objetivos}" for="objetivos" />
+                        <p:inputText id="objetivos" value="#{detalhesProjetoController.selected.objetivos}" title="#{bundle.EditDetalhesProjetoTitle_objetivos}" />
+                        <p:outputLabel value="#{bundle.EditDetalhesProjetoLabel_metas}" for="metas" />
+                        <p:inputText id="metas" value="#{detalhesProjetoController.selected.metas}" title="#{bundle.EditDetalhesProjetoTitle_metas}" />
+                        <p:outputLabel value="#{bundle.EditDetalhesProjetoLabel_metodologia}" for="metodologia" />
+                        <p:inputText id="metodologia" value="#{detalhesProjetoController.selected.metodologia}" title="#{bundle.EditDetalhesProjetoTitle_metodologia}" />
+                        <p:outputLabel value="#{bundle.EditDetalhesProjetoLabel_sistemaDeAvaliacao}" for="sistemaDeAvaliacao" />
+                        <p:inputText id="sistemaDeAvaliacao" value="#{detalhesProjetoController.selected.sistemaDeAvaliacao}" title="#{bundle.EditDetalhesProjetoTitle_sistemaDeAvaliacao}" />
+                        <p:outputLabel value="#{bundle.EditDetalhesProjetoLabel_bibliografiaBasica}" for="bibliografiaBasica" />
+                        <p:inputText id="bibliografiaBasica" value="#{detalhesProjetoController.selected.bibliografiaBasica}" title="#{bundle.EditDetalhesProjetoTitle_bibliografiaBasica}" />
+                        <p:outputLabel value="#{bundle.EditDetalhesProjetoLabel_convenio}" for="convenio" />
+                        <p:inputText id="convenio" value="#{detalhesProjetoController.selected.convenio}" title="#{bundle.EditDetalhesProjetoTitle_convenio}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalhesProjetoController.update}" value="#{bundle.Save}" update="display,:DetalhesProjetoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DetalhesProjetoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalhesProjetoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

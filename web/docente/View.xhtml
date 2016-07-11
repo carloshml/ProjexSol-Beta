@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocenteViewDlg" widgetVar="DocenteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDocenteTitle}">
+            <h:form id="DocenteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{docenteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDocenteLabel_qualificacao}"/>
+                        <h:outputText value="#{docenteController.selected.qualificacao}" title="#{bundle.ViewDocenteTitle_qualificacao}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_cargaHoraria}"/>
+                        <h:outputText value="#{docenteController.selected.cargaHoraria}" title="#{bundle.ViewDocenteTitle_cargaHoraria}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_curso}"/>
+                        <h:outputText value="#{docenteController.selected.curso}" title="#{bundle.ViewDocenteTitle_curso}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_departamento}"/>
+                        <h:outputText value="#{docenteController.selected.departamento}" title="#{bundle.ViewDocenteTitle_departamento}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_ativo}"/>
+                        <h:outputText value="#{docenteController.selected.ativo}" title="#{bundle.ViewDocenteTitle_ativo}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_endereco}"/>
+                        <h:outputText value="#{docenteController.selected.endereco}" title="#{bundle.ViewDocenteTitle_endereco}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_telefone}"/>
+                        <h:outputText value="#{docenteController.selected.telefone}" title="#{bundle.ViewDocenteTitle_telefone}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_celular}"/>
+                        <h:outputText value="#{docenteController.selected.celular}" title="#{bundle.ViewDocenteTitle_celular}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_email}"/>
+                        <h:outputText value="#{docenteController.selected.email}" title="#{bundle.ViewDocenteTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_nome}"/>
+                        <h:outputText value="#{docenteController.selected.nome}" title="#{bundle.ViewDocenteTitle_nome}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_codigo}"/>
+                        <h:outputText value="#{docenteController.selected.codigo}" title="#{bundle.ViewDocenteTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_cpf}"/>
+                        <h:outputText value="#{docenteController.selected.cpf}" title="#{bundle.ViewDocenteTitle_cpf}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_rg}"/>
+                        <h:outputText value="#{docenteController.selected.rg}" title="#{bundle.ViewDocenteTitle_rg}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_login}"/>
+                        <h:outputText value="#{docenteController.selected.login}" title="#{bundle.ViewDocenteTitle_login}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_senha}"/>
+                        <h:outputText value="#{docenteController.selected.senha}" title="#{bundle.ViewDocenteTitle_senha}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_id}"/>
+                        <h:outputText value="#{docenteController.selected.id}" title="#{bundle.ViewDocenteTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DocenteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

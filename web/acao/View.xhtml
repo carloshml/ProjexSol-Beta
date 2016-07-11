@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AcaoViewDlg" widgetVar="AcaoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAcaoTitle}">
+            <h:form id="AcaoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{acaoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAcaoLabel_id}"/>
+                        <h:outputText value="#{acaoController.selected.id}" title="#{bundle.ViewAcaoTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewAcaoLabel_codigo}"/>
+                        <h:outputText value="#{acaoController.selected.codigo}" title="#{bundle.ViewAcaoTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewAcaoLabel_nome}"/>
+                        <h:outputText value="#{acaoController.selected.nome}" title="#{bundle.ViewAcaoTitle_nome}"/>
+                        <h:outputText value="#{bundle.ViewAcaoLabel_dataInicial}"/>
+                        <h:outputText value="#{acaoController.selected.dataInicial}" title="#{bundle.ViewAcaoTitle_dataInicial}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAcaoLabel_dataFinal}"/>
+                        <h:outputText value="#{acaoController.selected.dataFinal}" title="#{bundle.ViewAcaoTitle_dataFinal}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAcaoLabel_tipo}"/>
+                        <h:outputText value="#{acaoController.selected.tipo}" title="#{bundle.ViewAcaoTitle_tipo}"/>
+                        <h:outputText value="#{bundle.ViewAcaoLabel_descricao}"/>
+                        <h:outputText value="#{acaoController.selected.descricao}" title="#{bundle.ViewAcaoTitle_descricao}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AcaoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

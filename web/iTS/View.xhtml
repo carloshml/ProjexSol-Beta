@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ITSViewDlg" widgetVar="ITSViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewITSTitle}">
+            <h:form id="ITSViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{iTSController.selected != null}">
+                        <h:outputText value="#{bundle.ViewITSLabel_id}"/>
+                        <h:outputText value="#{iTSController.selected.id}" title="#{bundle.ViewITSTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewITSLabel_codigo}"/>
+                        <h:outputText value="#{iTSController.selected.codigo}" title="#{bundle.ViewITSTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewITSLabel_nome}"/>
+                        <h:outputText value="#{iTSController.selected.nome}" title="#{bundle.ViewITSTitle_nome}"/>
+                        <h:outputText value="#{bundle.ViewITSLabel_cnpj}"/>
+                        <h:outputText value="#{iTSController.selected.cnpj}" title="#{bundle.ViewITSTitle_cnpj}"/>
+                        <h:outputText value="#{bundle.ViewITSLabel_tipoInstituicao}"/>
+                        <h:outputText value="#{iTSController.selected.tipoInstituicao}" title="#{bundle.ViewITSTitle_tipoInstituicao}"/>
+                        <h:outputText value="#{bundle.ViewITSLabel_endereco}"/>
+                        <h:outputText value="#{iTSController.selected.endereco}" title="#{bundle.ViewITSTitle_endereco}"/>
+                        <h:outputText value="#{bundle.ViewITSLabel_email}"/>
+                        <h:outputText value="#{iTSController.selected.email}" title="#{bundle.ViewITSTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewITSLabel_diretor}"/>
+                        <h:outputText value="#{iTSController.selected.diretor}" title="#{bundle.ViewITSTitle_diretor}"/>
+                        <h:outputText value="#{bundle.ViewITSLabel_funcao}"/>
+                        <h:outputText value="#{iTSController.selected.funcao}" title="#{bundle.ViewITSTitle_funcao}"/>
+                        <h:outputText value="#{bundle.ViewITSLabel_telefone}"/>
+                        <h:outputText value="#{iTSController.selected.telefone}" title="#{bundle.ViewITSTitle_telefone}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ITSViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

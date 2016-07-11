@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjetoCreateDlg" widgetVar="ProjetoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProjetoTitle}">
+            <h:form id="ProjetoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projetoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{projetoController.selected.id}" title="#{bundle.CreateProjetoTitle_id}" required="true" requiredMessage="#{bundle.CreateProjetoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_instituicaoTerceiroSetor}" for="instituicaoTerceiroSetor" />
+                        <p:selectOneMenu id="instituicaoTerceiroSetor" value="#{projetoController.selected.instituicaoTerceiroSetor}" >
+                            <f:selectItems value="#{iTSController.itemsAvailableSelectOne}"
+                                           var="instituicaoTerceiroSetorItem"
+                                           itemValue="#{instituicaoTerceiroSetorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_dataCriacao}" for="dataCriacao" />
+                        <p:calendar id="dataCriacao" pattern="MM/dd/yyyy" value="#{projetoController.selected.dataCriacao}" title="#{bundle.EditProjetoTitle_dataCriacao}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_linhaProgramatica}" for="linhaProgramatica" />
+                        <p:inputText id="linhaProgramatica" value="#{projetoController.selected.linhaProgramatica}" title="#{bundle.CreateProjetoTitle_linhaProgramatica}" />
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_dataInicial}" for="dataInicial" />
+                        <p:calendar id="dataInicial" pattern="MM/dd/yyyy" value="#{projetoController.selected.dataInicial}" title="#{bundle.EditProjetoTitle_dataInicial}" required="true" requiredMessage="#{bundle.EditProjetoRequiredMessage_dataInicial}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_dataFinal}" for="dataFinal" />
+                        <p:calendar id="dataFinal" pattern="MM/dd/yyyy" value="#{projetoController.selected.dataFinal}" title="#{bundle.EditProjetoTitle_dataFinal}" required="true" requiredMessage="#{bundle.EditProjetoRequiredMessage_dataFinal}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_dadosFomento}" for="dadosFomento" />
+                        <p:selectOneMenu id="dadosFomento" value="#{projetoController.selected.dadosFomento}" >
+                            <f:selectItems value="#{fomentoProjetoController.itemsAvailableSelectOne}"
+                                           var="dadosFomentoItem"
+                                           itemValue="#{dadosFomentoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{projetoController.selected.codigo}" title="#{bundle.CreateProjetoTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_gerenteProjeto}" for="gerenteProjeto" />
+                        <p:selectOneMenu id="gerenteProjeto" value="#{projetoController.selected.gerenteProjeto}" >
+                            <f:selectItems value="#{voluntarioController.itemsAvailableSelectOne}"
+                                           var="gerenteProjetoItem"
+                                           itemValue="#{gerenteProjetoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_custoProjeto}" for="custoProjeto" />
+                        <p:inputText id="custoProjeto" value="#{projetoController.selected.custoProjeto}" title="#{bundle.CreateProjetoTitle_custoProjeto}" />
+                        <p:outputLabel value="#{bundle.CreateProjetoLabel_detalhes}" for="detalhes" />
+                        <p:selectOneMenu id="detalhes" value="#{projetoController.selected.detalhes}" >
+                            <f:selectItems value="#{detalhesProjetoController.itemsAvailableSelectOne}"
+                                           var="detalhesItem"
+                                           itemValue="#{detalhesItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projetoController.create}" value="#{bundle.Save}" update="display,:ProjetoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProjetoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProjetoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

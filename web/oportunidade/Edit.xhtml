@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OportunidadeEditDlg" widgetVar="OportunidadeEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOportunidadeTitle}">
+            <h:form id="OportunidadeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{oportunidadeController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOportunidadeLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{oportunidadeController.selected.id}" title="#{bundle.EditOportunidadeTitle_id}" required="true" requiredMessage="#{bundle.EditOportunidadeRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditOportunidadeLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{oportunidadeController.selected.codigo}" title="#{bundle.EditOportunidadeTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditOportunidadeLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{oportunidadeController.selected.nome}" title="#{bundle.EditOportunidadeTitle_nome}" />
+                        <p:outputLabel value="#{bundle.EditOportunidadeLabel_descricao}" for="descricao" />
+                        <p:inputText id="descricao" value="#{oportunidadeController.selected.descricao}" title="#{bundle.EditOportunidadeTitle_descricao}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{oportunidadeController.update}" value="#{bundle.Save}" update="display,:OportunidadeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OportunidadeEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OportunidadeEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

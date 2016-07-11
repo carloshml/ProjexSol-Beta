@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VoluntarioEditDlg" widgetVar="VoluntarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditVoluntarioTitle}">
+            <h:form id="VoluntarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{voluntarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_ativo}" for="ativo" />
+                        <p:inputText id="ativo" value="#{voluntarioController.selected.ativo}" title="#{bundle.EditVoluntarioTitle_ativo}" />
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_endereco}" for="endereco" />
+                        <p:selectOneMenu id="endereco" value="#{voluntarioController.selected.endereco}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
+                                           var="enderecoItem"
+                                           itemValue="#{enderecoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{voluntarioController.selected.telefone}" title="#{bundle.EditVoluntarioTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_celular}" for="celular" />
+                        <p:inputText id="celular" value="#{voluntarioController.selected.celular}" title="#{bundle.EditVoluntarioTitle_celular}" />
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{voluntarioController.selected.email}" title="#{bundle.EditVoluntarioTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{voluntarioController.selected.nome}" title="#{bundle.EditVoluntarioTitle_nome}" />
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{voluntarioController.selected.codigo}" title="#{bundle.EditVoluntarioTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_cpf}" for="cpf" />
+                        <p:inputText id="cpf" value="#{voluntarioController.selected.cpf}" title="#{bundle.EditVoluntarioTitle_cpf}" />
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_rg}" for="rg" />
+                        <p:inputText id="rg" value="#{voluntarioController.selected.rg}" title="#{bundle.EditVoluntarioTitle_rg}" />
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{voluntarioController.selected.login}" title="#{bundle.EditVoluntarioTitle_login}" />
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_senha}" for="senha" />
+                        <p:inputText id="senha" value="#{voluntarioController.selected.senha}" title="#{bundle.EditVoluntarioTitle_senha}" />
+                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{voluntarioController.selected.id}" title="#{bundle.EditVoluntarioTitle_id}" required="true" requiredMessage="#{bundle.EditVoluntarioRequiredMessage_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{voluntarioController.update}" value="#{bundle.Save}" update="display,:VoluntarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'VoluntarioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VoluntarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DisciplinaCreateDlg" widgetVar="DisciplinaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDisciplinaTitle}">
+            <h:form id="DisciplinaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{disciplinaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDisciplinaLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{disciplinaController.selected.id}" title="#{bundle.CreateDisciplinaTitle_id}" required="true" requiredMessage="#{bundle.CreateDisciplinaRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateDisciplinaLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{disciplinaController.selected.nome}" title="#{bundle.CreateDisciplinaTitle_nome}" />
+                        <p:outputLabel value="#{bundle.CreateDisciplinaLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{disciplinaController.selected.codigo}" title="#{bundle.CreateDisciplinaTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateDisciplinaLabel_curso}" for="curso" />
+                        <p:selectOneMenu id="curso" value="#{disciplinaController.selected.curso}" >
+                            <f:selectItems value="#{cursoController.itemsAvailableSelectOne}"
+                                           var="cursoItem"
+                                           itemValue="#{cursoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDisciplinaLabel_docente}" for="docente" />
+                        <p:selectOneMenu id="docente" value="#{disciplinaController.selected.docente}" >
+                            <f:selectItems value="#{docenteController.itemsAvailableSelectOne}"
+                                           var="docenteItem"
+                                           itemValue="#{docenteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{disciplinaController.create}" value="#{bundle.Save}" update="display,:DisciplinaListForm:datalist,:growl" oncomplete="handleSubmit(args,'DisciplinaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DisciplinaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

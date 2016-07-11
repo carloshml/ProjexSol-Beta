@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AreaDeInteressesCreateDlg" widgetVar="AreaDeInteressesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAreaDeInteressesTitle}">
+            <h:form id="AreaDeInteressesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{areaDeInteressesController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAreaDeInteressesLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{areaDeInteressesController.selected.id}" title="#{bundle.CreateAreaDeInteressesTitle_id}" required="true" requiredMessage="#{bundle.CreateAreaDeInteressesRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateAreaDeInteressesLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{areaDeInteressesController.selected.codigo}" title="#{bundle.CreateAreaDeInteressesTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateAreaDeInteressesLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{areaDeInteressesController.selected.nome}" title="#{bundle.CreateAreaDeInteressesTitle_nome}" />
+                        <p:outputLabel value="#{bundle.CreateAreaDeInteressesLabel_descricao}" for="descricao" />
+                        <p:inputText id="descricao" value="#{areaDeInteressesController.selected.descricao}" title="#{bundle.CreateAreaDeInteressesTitle_descricao}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{areaDeInteressesController.create}" value="#{bundle.Save}" update="display,:AreaDeInteressesListForm:datalist,:growl" oncomplete="handleSubmit(args,'AreaDeInteressesCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AreaDeInteressesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

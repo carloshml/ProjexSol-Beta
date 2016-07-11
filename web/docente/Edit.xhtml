@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocenteEditDlg" widgetVar="DocenteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDocenteTitle}">
+            <h:form id="DocenteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{docenteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_qualificacao}" for="qualificacao" />
+                        <p:inputText id="qualificacao" value="#{docenteController.selected.qualificacao}" title="#{bundle.EditDocenteTitle_qualificacao}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_cargaHoraria}" for="cargaHoraria" />
+                        <p:inputText id="cargaHoraria" value="#{docenteController.selected.cargaHoraria}" title="#{bundle.EditDocenteTitle_cargaHoraria}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_curso}" for="curso" />
+                        <p:selectOneMenu id="curso" value="#{docenteController.selected.curso}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cursoController.itemsAvailableSelectOne}"
+                                           var="cursoItem"
+                                           itemValue="#{cursoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_departamento}" for="departamento" />
+                        <p:selectOneMenu id="departamento" value="#{docenteController.selected.departamento}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
+                                           var="departamentoItem"
+                                           itemValue="#{departamentoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_ativo}" for="ativo" />
+                        <p:inputText id="ativo" value="#{docenteController.selected.ativo}" title="#{bundle.EditDocenteTitle_ativo}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_endereco}" for="endereco" />
+                        <p:selectOneMenu id="endereco" value="#{docenteController.selected.endereco}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
+                                           var="enderecoItem"
+                                           itemValue="#{enderecoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{docenteController.selected.telefone}" title="#{bundle.EditDocenteTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_celular}" for="celular" />
+                        <p:inputText id="celular" value="#{docenteController.selected.celular}" title="#{bundle.EditDocenteTitle_celular}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{docenteController.selected.email}" title="#{bundle.EditDocenteTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{docenteController.selected.nome}" title="#{bundle.EditDocenteTitle_nome}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{docenteController.selected.codigo}" title="#{bundle.EditDocenteTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_cpf}" for="cpf" />
+                        <p:inputText id="cpf" value="#{docenteController.selected.cpf}" title="#{bundle.EditDocenteTitle_cpf}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_rg}" for="rg" />
+                        <p:inputText id="rg" value="#{docenteController.selected.rg}" title="#{bundle.EditDocenteTitle_rg}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{docenteController.selected.login}" title="#{bundle.EditDocenteTitle_login}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_senha}" for="senha" />
+                        <p:inputText id="senha" value="#{docenteController.selected.senha}" title="#{bundle.EditDocenteTitle_senha}" />
+                        <p:outputLabel value="#{bundle.EditDocenteLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{docenteController.selected.id}" title="#{bundle.EditDocenteTitle_id}" required="true" requiredMessage="#{bundle.EditDocenteRequiredMessage_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{docenteController.update}" value="#{bundle.Save}" update="display,:DocenteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DocenteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DocenteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

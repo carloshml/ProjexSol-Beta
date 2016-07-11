@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AtividadeEditDlg" widgetVar="AtividadeEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAtividadeTitle}">
+            <h:form id="AtividadeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{atividadeController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAtividadeLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{atividadeController.selected.id}" title="#{bundle.EditAtividadeTitle_id}" required="true" requiredMessage="#{bundle.EditAtividadeRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditAtividadeLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{atividadeController.selected.codigo}" title="#{bundle.EditAtividadeTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditAtividadeLabel_nomeAtividae}" for="nomeAtividae" />
+                        <p:inputText id="nomeAtividae" value="#{atividadeController.selected.nomeAtividae}" title="#{bundle.EditAtividadeTitle_nomeAtividae}" />
+                        <p:outputLabel value="#{bundle.EditAtividadeLabel_local}" for="local" />
+                        <p:selectOneMenu id="local" value="#{atividadeController.selected.local}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
+                                           var="localItem"
+                                           itemValue="#{localItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditAtividadeLabel_horario}" for="horario" />
+                        <p:inputText id="horario" value="#{atividadeController.selected.horario}" title="#{bundle.EditAtividadeTitle_horario}" />
+                        <p:outputLabel value="#{bundle.EditAtividadeLabel_dataInicio}" for="dataInicio" />
+                        <p:calendar id="dataInicio" pattern="MM/dd/yyyy" value="#{atividadeController.selected.dataInicio}" title="#{bundle.EditAtividadeTitle_dataInicio}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditAtividadeLabel_dataFinal}" for="dataFinal" />
+                        <p:calendar id="dataFinal" pattern="MM/dd/yyyy" value="#{atividadeController.selected.dataFinal}" title="#{bundle.EditAtividadeTitle_dataFinal}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{atividadeController.update}" value="#{bundle.Save}" update="display,:AtividadeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AtividadeEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AtividadeEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

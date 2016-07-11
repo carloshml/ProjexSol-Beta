@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InstituicaoDeEnsinoViewDlg" widgetVar="InstituicaoDeEnsinoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInstituicaoDeEnsinoTitle}">
+            <h:form id="InstituicaoDeEnsinoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{instituicaoDeEnsinoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInstituicaoDeEnsinoLabel_id}"/>
+                        <h:outputText value="#{instituicaoDeEnsinoController.selected.id}" title="#{bundle.ViewInstituicaoDeEnsinoTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewInstituicaoDeEnsinoLabel_codigo}"/>
+                        <h:outputText value="#{instituicaoDeEnsinoController.selected.codigo}" title="#{bundle.ViewInstituicaoDeEnsinoTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewInstituicaoDeEnsinoLabel_nome}"/>
+                        <h:outputText value="#{instituicaoDeEnsinoController.selected.nome}" title="#{bundle.ViewInstituicaoDeEnsinoTitle_nome}"/>
+                        <h:outputText value="#{bundle.ViewInstituicaoDeEnsinoLabel_cnpj}"/>
+                        <h:outputText value="#{instituicaoDeEnsinoController.selected.cnpj}" title="#{bundle.ViewInstituicaoDeEnsinoTitle_cnpj}"/>
+                        <h:outputText value="#{bundle.ViewInstituicaoDeEnsinoLabel_endereco}"/>
+                        <h:outputText value="#{instituicaoDeEnsinoController.selected.endereco}" title="#{bundle.ViewInstituicaoDeEnsinoTitle_endereco}"/>
+                        <h:outputText value="#{bundle.ViewInstituicaoDeEnsinoLabel_email}"/>
+                        <h:outputText value="#{instituicaoDeEnsinoController.selected.email}" title="#{bundle.ViewInstituicaoDeEnsinoTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewInstituicaoDeEnsinoLabel_telefone}"/>
+                        <h:outputText value="#{instituicaoDeEnsinoController.selected.telefone}" title="#{bundle.ViewInstituicaoDeEnsinoTitle_telefone}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InstituicaoDeEnsinoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

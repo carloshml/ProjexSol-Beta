@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjetoViewDlg" widgetVar="ProjetoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProjetoTitle}">
+            <h:form id="ProjetoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projetoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProjetoLabel_id}"/>
+                        <h:outputText value="#{projetoController.selected.id}" title="#{bundle.ViewProjetoTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewProjetoLabel_instituicaoTerceiroSetor}"/>
+                        <h:outputText value="#{projetoController.selected.instituicaoTerceiroSetor}" title="#{bundle.ViewProjetoTitle_instituicaoTerceiroSetor}"/>
+                        <h:outputText value="#{bundle.ViewProjetoLabel_dataCriacao}"/>
+                        <h:outputText value="#{projetoController.selected.dataCriacao}" title="#{bundle.ViewProjetoTitle_dataCriacao}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProjetoLabel_linhaProgramatica}"/>
+                        <h:outputText value="#{projetoController.selected.linhaProgramatica}" title="#{bundle.ViewProjetoTitle_linhaProgramatica}"/>
+                        <h:outputText value="#{bundle.ViewProjetoLabel_dataInicial}"/>
+                        <h:outputText value="#{projetoController.selected.dataInicial}" title="#{bundle.ViewProjetoTitle_dataInicial}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProjetoLabel_dataFinal}"/>
+                        <h:outputText value="#{projetoController.selected.dataFinal}" title="#{bundle.ViewProjetoTitle_dataFinal}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProjetoLabel_dadosFomento}"/>
+                        <h:outputText value="#{projetoController.selected.dadosFomento}" title="#{bundle.ViewProjetoTitle_dadosFomento}"/>
+                        <h:outputText value="#{bundle.ViewProjetoLabel_codigo}"/>
+                        <h:outputText value="#{projetoController.selected.codigo}" title="#{bundle.ViewProjetoTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewProjetoLabel_gerenteProjeto}"/>
+                        <h:outputText value="#{projetoController.selected.gerenteProjeto}" title="#{bundle.ViewProjetoTitle_gerenteProjeto}"/>
+                        <h:outputText value="#{bundle.ViewProjetoLabel_custoProjeto}"/>
+                        <h:outputText value="#{projetoController.selected.custoProjeto}" title="#{bundle.ViewProjetoTitle_custoProjeto}"/>
+                        <h:outputText value="#{bundle.ViewProjetoLabel_detalhes}"/>
+                        <h:outputText value="#{projetoController.selected.detalhes}" title="#{bundle.ViewProjetoTitle_detalhes}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProjetoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
