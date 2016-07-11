@@ -79,10 +79,10 @@ public class EnderecoController {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-    public Endereco cadastrarEndereco(){
-        Endereco endereco = new Endereco(codigo, logradouro, numero, bairro, cidade, uf, cep);
-        EnderecoDAO.insertEndereco(endereco);
-        return endereco;
-    }
+//    public Endereco cadastrarEndereco(){
+//        Endereco endereco = new Endereco(codigo, logradouro, numero, bairro, cidade, uf, cep);
+//        EnderecoDAO.insertEndereco(endereco);
+//        return endereco;
+//    }
 
 }

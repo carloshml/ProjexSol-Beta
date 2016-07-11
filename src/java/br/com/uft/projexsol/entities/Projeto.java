@@ -8,13 +8,17 @@ package br.com.uft.projexsol.entities;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -31,32 +35,19 @@ import javax.validation.constraints.Size;
 @Entity
 @Table (name = "projeto")
 public class Projeto implements Serializable  {
-
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;  
+    private Integer id;
+    @Column(name = "codigo")
     private int codigo;
-    @JoinColumn(  name= "fk_voluntario", nullable = false )
-    @OneToOne
-    private Voluntario gerenteProjeto;
     private double custoProjeto;
-    @JoinColumn(  name= "fk_detalhes", nullable = false )
-    @OneToOne
-    private DetalhesProjeto detalhes;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataCriacao;
     @Size(max = 120)
     private String linhaProgramatica;
-    @Size(max = 120)
-    private String areaDirex;
-    @Size(max = 120)
-    private String linhaDirex;
-    @Size(max = 120)
-    private String numOrdemDirex;
-    @Size(max = 120)
-    private String numRegistroDirex;
     @Basic(optional = false)
     @NotNull
     @Column(name = "dataInicial")
@@ -66,20 +57,30 @@ public class Projeto implements Serializable  {
     @Column(name = "dataFinal")
     @Temporal(TemporalType.DATE)
     private Date dataFinal;
-    @OneToMany
+    @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name="DETALHESPROJETO_ID", nullable=true)
+    private DetalhesProjeto detalhes;
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="PROJETO_TEM_AREASDEINTERESSES", joinColumns={ @JoinColumn(name="PROJETO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="AREASDEINTERESSES_ID", referencedColumnName="id")})
     private List<AreaDeInteresses> areasDeInteresses;
-    @Column(name = "fomentoProjeto")
+    @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name="GERENTEPROJETO_ID", nullable=true)
+    private Voluntario gerenteProjeto;
+    @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name="FOMENTOPROJETO_ID", nullable=true)
     private FomentoProjeto dadosFomento;
-    @JoinColumn( name= "fk_acao", nullable = false)
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="PROJETO_TEM_ACOES", joinColumns={ @JoinColumn(name="PROJETO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="ACOES_ID", referencedColumnName="id")})
     private List<Acao> acoes;
     private boolean autorizado;
-    @JoinColumn( name= "fk_oportunidade", nullable = false)
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="PROJETO_TEM_OPORTUNIDADES", joinColumns={ @JoinColumn(name="PROJETO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="OPORTUNIDADES_ID", referencedColumnName="id")})
     private List<Oportunidade> oportunidades;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name="INTITUICAOTERCEITOSETOR_ID", nullable=true)
     private ITS instituicaoTerceiroSetor;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="PROJETO_TEM_AvALIACOES", joinColumns={ @JoinColumn(name="PROJETO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="AVALIACOES_ID", referencedColumnName="id")})
     private List<Avaliacao> avaliacoesProjeto;
 
     public Projeto(Integer id, int codigo, Voluntario gerenteProjeto, double custoProjeto, DetalhesProjeto detalhes, Date dataCriacao, String linhaProgramatica, String areaDirex, String linhaDirex, String numOrdemDirex, String numRegistroDirex, Date dataInicial, Date dataFinal, List<AreaDeInteresses> areasDeInteresses, FomentoProjeto dadosFomento, List<Acao> acoes, boolean autorizado, List<Oportunidade> oportunidades, ITS instituicaoTerceiroSetor, List<Avaliacao> avaliacoesProjeto) {
@@ -90,10 +91,6 @@ public class Projeto implements Serializable  {
         this.detalhes = detalhes;
         this.dataCriacao = dataCriacao;
         this.linhaProgramatica = linhaProgramatica;
-        this.areaDirex = areaDirex;
-        this.linhaDirex = linhaDirex;
-        this.numOrdemDirex = numOrdemDirex;
-        this.numRegistroDirex = numRegistroDirex;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
         this.areasDeInteresses = areasDeInteresses;
@@ -182,38 +179,6 @@ public class Projeto implements Serializable  {
         this.linhaProgramatica = linhaProgramatica;
     }
 
-    public String getAreaDirex() {
-        return areaDirex;
-    }
-
-    public void setAreaDirex(String areaDirex) {
-        this.areaDirex = areaDirex;
-    }
-
-    public String getLinhaDirex() {
-        return linhaDirex;
-    }
-
-    public void setLinhaDirex(String linhaDirex) {
-        this.linhaDirex = linhaDirex;
-    }
-
-    public String getNumOrdemDirex() {
-        return numOrdemDirex;
-    }
-
-    public void setNumOrdemDirex(String numOrdemDirex) {
-        this.numOrdemDirex = numOrdemDirex;
-    }
-
-    public String getNumRegistroDirex() {
-        return numRegistroDirex;
-    }
-
-    public void setNumRegistroDirex(String numRegistroDirex) {
-        this.numRegistroDirex = numRegistroDirex;
-    }
-
     public Date getDataInicial() {
         return dataInicial;
     }
@@ -278,4 +243,34 @@ public class Projeto implements Serializable  {
         this.detalhes = detalhes;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Projeto other = (Projeto) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Projeto{" + "gerenteProjeto=" + gerenteProjeto.getNome() + '}';
+    }
+    
 }

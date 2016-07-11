@@ -106,9 +106,9 @@ public class VoluntarioCadController {
         this.endereco = endereco;
     }
     
-    public void cadastrarVoluntario(){
-        Voluntario voluntario = new Voluntario(codigo, nome, cpf, rg, login, senha, telefone, celular, email, endereco, null);
-        
-    }
-    
+//    public void cadastrarVoluntario(){
+//        Voluntario voluntario = new Voluntario(codigo, nome, cpf, rg, login, senha, telefone, celular, email, endereco, null);
+//        
+//    }
+//    
 }

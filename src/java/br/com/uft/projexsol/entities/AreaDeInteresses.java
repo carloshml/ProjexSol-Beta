@@ -6,6 +6,7 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,19 +24,22 @@ import javax.validation.constraints.Size;
 @Table(name= "areaDeInteresses")
 public class AreaDeInteresses implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 60)
-    private int codigo;
+    @Column(name = "codigo")
+    private String codigo;
     @Size(max = 60)
     private String nome;
     @Size(max = 200)
     private String descricao;
 
-    public AreaDeInteresses(Integer id, int codigo, String nome, String descricao) {
+    public AreaDeInteresses(Integer id) {
         this.id = id;
+    }
+
+    public AreaDeInteresses(Integer id, String codigo, String nome, String descricao) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -53,11 +57,11 @@ public class AreaDeInteresses implements Serializable {
         this.id = id;
     }
     
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -75,6 +79,36 @@ public class AreaDeInteresses implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AreaDeInteresses other = (AreaDeInteresses) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "AreaDeInteresses{" + "nome=" + nome + ", descricao=" + descricao + '}';
     }
     
 }

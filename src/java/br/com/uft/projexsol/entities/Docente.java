@@ -8,49 +8,42 @@ package br.com.uft.projexsol.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 /**
  *
  * @author aluno
  */
 @Entity
-public class Docente extends Voluntario implements Serializable{
+public class Docente extends VoluntarioEnsino implements Serializable{
 
-    @JoinColumn( name= "fk_curso", nullable = false)
-    @OneToOne
-    private Curso curso;
-    @JoinColumn(name= "fk_departamento", nullable = false)    
-    @OneToOne
-    private Departamento departamento;
+    private String qualificacao;
+    private String cargaHoraria;
 
-    public Docente(Curso curso, Departamento departamento, Integer id, String nome, int codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
-        super(id, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
-        this.curso = curso;
-        this.departamento = departamento;
+    public Docente(String qualificacao, String cargaHoraria, Curso curso, Departamento departamento, Integer id, String ativo, String nome, String codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
+        super(curso, departamento, id, ativo, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
+        this.qualificacao = qualificacao;
+        this.cargaHoraria = cargaHoraria;
     }
-
-    public Docente(Curso curso, Departamento departamento) {
-        this.curso = curso;
-        this.departamento = departamento;
-    }
-
+    
     public Docente() {
      }
-    public Curso getCurso() {
-        return curso;
+
+    public String getQualificacao() {
+        return qualificacao;
     }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
+    public void setQualificacao(String qualificacao) {
+        this.qualificacao = qualificacao;
     }
 
-    public Departamento getDepartamento() {
-        return departamento;
+    public String getCargaHoraria() {
+        return cargaHoraria;
     }
 
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
+    public void setCargaHoraria(String cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
     }
+
+
+    
 }

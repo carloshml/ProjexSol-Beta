@@ -7,13 +7,17 @@ package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,35 +32,37 @@ import javax.validation.constraints.Size;
 public class InstituicaoDeEnsino implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    private int codigo;
+    @Column(name = "codigo")
+    private String codigo;
     @Size(max = 120)
     private String nome;
     @Size(max = 18)
     private String cnpj;
-    @JoinColumn( name = "fk_endereco", nullable = false)
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name="ENDERECO_ID", nullable=true)
     private Endereco endereco;
     @Size(max = 60)
     private String email;
-    @Size(max = 2)
-    private String estado;
     @Size(max = 20)
     private String telefone;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="INTITUIICAODEENSINO_TEM_DEPARTAMENTOS", joinColumns={ @JoinColumn(name="INSTITUICAODEENSINO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="DEPARTAMENTOS_ID", referencedColumnName="id")})
     private List<Departamento> departamentos;
-    
-    public InstituicaoDeEnsino(Integer id, int codigo, String nome, String cnpj, Endereco endereco, String email, String estado, String telefone, List<Departamento> departamentos) {
+
+    public InstituicaoDeEnsino(Integer id) {
         this.id = id;
+    }
+    
+    public InstituicaoDeEnsino(Integer id, String codigo, String nome, String cnpj, Endereco endereco, String email, String estado, String telefone, List<Departamento> departamentos) {
         this.codigo = codigo;
         this.nome = nome;
         this.cnpj = cnpj;
         this.endereco = endereco;
         this.email = email;
-        this.estado = estado;
         this.telefone = telefone;
         this.departamentos = departamentos;
     }
@@ -72,19 +78,11 @@ public class InstituicaoDeEnsino implements Serializable {
         this.id = id;
     }
     
-    public String getEstado() {
-        return estado;
-    }
-    
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-    
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
     
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
     
@@ -134,6 +132,36 @@ public class InstituicaoDeEnsino implements Serializable {
     
     public void setDepartamentos(List<Departamento> departamentos) {
         this.departamentos = departamentos;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final InstituicaoDeEnsino other = (InstituicaoDeEnsino) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "InstituicaoDeEnsino{" + "nome=" + nome + '}';
     }
     
 }

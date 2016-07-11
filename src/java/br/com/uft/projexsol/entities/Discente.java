@@ -7,34 +7,30 @@ package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
- * @author PedroLima
+ * @author Pedro Lima
  */
 @Entity
-public class Discente extends Voluntario implements Serializable {
+public class Discente extends VoluntarioEnsino implements Serializable {
 
-    @JoinColumn( name="fk_curso", nullable = false)
-    @OneToOne    
-    private Curso curso;
-    @JoinColumn( name="fk_disciplinas", nullable = false)
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="DISCENTE_TEM_DISCIPLINAS", joinColumns={ @JoinColumn(name="DISCENTE_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="DISCIPLINAS_ID", referencedColumnName="id")})
     private List<Disciplina> disciplinas;
 
-    public Discente(Curso curso, List<Disciplina> disciplinas, Integer id, String nome, int codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
-        super(id, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
-        this.curso = curso;
-        this.disciplinas = disciplinas;
-    }
+    private String matricula;
 
-    public Discente(Curso curso, List<Disciplina> disciplinas) {
-        this.curso = curso;
+    public Discente(List<Disciplina> disciplinas, String matricula, Curso curso, Departamento departamento, Integer id, String ativo, String nome, String codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
+        super(curso, departamento, id, ativo, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
         this.disciplinas = disciplinas;
+        this.matricula = matricula;
     }
 
     public Discente() {
@@ -47,13 +43,13 @@ public class Discente extends Voluntario implements Serializable {
     public void setDisciplinas(List<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
     }
-
-    public Curso getCurso() {
-        return curso;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
+    
 
 }

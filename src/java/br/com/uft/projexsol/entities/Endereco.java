@@ -6,6 +6,7 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,12 +25,10 @@ import javax.validation.constraints.Size;
 public class Endereco implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 60)
-    private int codigo;
     @Size(max = 10)
     private String logradouro;
     @Size(max = 40)
@@ -42,10 +41,12 @@ public class Endereco implements Serializable {
     private String cep;
     @Size(max = 5)
     private String numero;
+
+    public Endereco(Integer id) {
+        this.id = id;
+    }
     
     public Endereco(Integer id, int codigo, String logradouro, String bairro, String uf, String cidade, String cep, String numero) {
-        this.id = id;
-        this.codigo = codigo;
         this.logradouro = logradouro;
         this.bairro = bairro;
         this.uf = uf;
@@ -62,13 +63,6 @@ public class Endereco implements Serializable {
     
     public void setId(Integer id) {
         this.id = id;
-    }
-    public int getCodigo() {
-        return codigo;
-    }
-    
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
     
     public String getLogradouro() {
@@ -118,4 +112,35 @@ public class Endereco implements Serializable {
     public void setNumero(String numero) {
         this.numero = numero;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Endereco other = (Endereco) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Endereco{" +  ", logradouro=" + logradouro + ", bairro=" + bairro + ", uf=" + uf + ", cidade=" + cidade + ", cep=" + cep + ", numero=" + numero + '}';
+    }
+    
 }
