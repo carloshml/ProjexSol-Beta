@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
 @Table(name= "beneficiario")
 public class Beneficiario implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;

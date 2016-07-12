@@ -37,7 +37,7 @@ import javax.validation.constraints.Size;
 public class Projeto implements Serializable  {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
@@ -63,19 +63,23 @@ public class Projeto implements Serializable  {
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinTable(name="PROJETO_TEM_AREASDEINTERESSES", joinColumns={ @JoinColumn(name="PROJETO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="AREASDEINTERESSES_ID", referencedColumnName="id")})
     private List<AreaDeInteresses> areasDeInteresses;
+    @NotNull
     @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name="GERENTEPROJETO_ID", nullable=true)
     private Voluntario gerenteProjeto;
+    @NotNull
     @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name="FOMENTOPROJETO_ID", nullable=true)
     private FomentoProjeto dadosFomento;
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinTable(name="PROJETO_TEM_ACOES", joinColumns={ @JoinColumn(name="PROJETO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="ACOES_ID", referencedColumnName="id")})
     private List<Acao> acoes;
+    @NotNull
     private boolean autorizado;
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinTable(name="PROJETO_TEM_OPORTUNIDADES", joinColumns={ @JoinColumn(name="PROJETO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="OPORTUNIDADES_ID", referencedColumnName="id")})
     private List<Oportunidade> oportunidades;
+    @NotNull
     @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name="INTITUICAOTERCEITOSETOR_ID", nullable=true)
     private ITS instituicaoTerceiroSetor;

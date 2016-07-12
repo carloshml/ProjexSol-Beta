@@ -29,7 +29,7 @@ import javax.validation.constraints.Size;
 public class Curso implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;

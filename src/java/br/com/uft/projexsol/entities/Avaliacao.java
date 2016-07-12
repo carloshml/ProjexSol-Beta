@@ -23,8 +23,8 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name= "avaliacao")
 public class Avaliacao implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+        @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
