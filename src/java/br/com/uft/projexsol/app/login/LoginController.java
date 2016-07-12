@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package br.com.uft.projexsol.app.login;
+import br.com.uft.projexsol.app.DAO.VoluntarioDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
@@ -33,24 +34,27 @@ public class LoginController {
     private String senha;
     
     public void logar(ActionEvent event){
-        // try {
+         try {
             RequestContext context = RequestContext.getCurrentInstance();
             FacesMessage message = null;
             boolean loggedIn = false;
-            //List<Voluntario> voluntarios = new GenericDAO().listar(Voluntario.class);
-            //if(login != null && username.equals("admin") && password != null && password.equals("admin")) {
+            
+            if(new VoluntarioDAO().getVolutario(login, senha)!=null) {
                
                 loggedIn = true;
                 message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo", login);
-            //} else {
+                FacesContext context2 = FacesContext.getCurrentInstance();
+                context2.getExternalContext().redirect(context2.getExternalContext().getRequestContextPath()+"/template.xhtml");
+            } else {
                 loggedIn = false;
                 message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro ao logar", "Nome de usuário ou senha inválidos");
-            //}
+            }
             
-            //FacesContext.getCurrentInstance().addMessage(null, message);
+            FacesContext.getCurrentInstance().addMessage(null, message);
             context.addCallbackParam("loggedIn", loggedIn);
-       // } catch (Exception ex) {
-         //   Logger.getLogger(UserLoginView.class.getName()).log(Level.SEVERE, null, ex);
-       // }
+            
+        } catch (Exception ex) {
+             System.out.println("Erro "+ex.getMessage());
+        }
     }
 }
