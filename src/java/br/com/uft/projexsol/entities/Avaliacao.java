@@ -35,7 +35,7 @@ public class Avaliacao implements Serializable {
         this.id = id;
     }
 
-    public Avaliacao(Integer id, String descricao) {
+    public Avaliacao( String descricao) {
         this.descricao = descricao;
     }
     public Avaliacao(){

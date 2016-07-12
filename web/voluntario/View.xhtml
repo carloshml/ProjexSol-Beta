@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{voluntarioController.selected != null}">
                         <h:outputText value="#{bundle.ViewVoluntarioLabel_ativo}"/>
-                        <h:outputText value="#{voluntarioController.selected.ativo}" title="#{bundle.ViewVoluntarioTitle_ativo}"/>
+                        <p:selectBooleanCheckbox value="#{voluntarioController.selected.ativo}" disabled="true"/>
                         <h:outputText value="#{bundle.ViewVoluntarioLabel_endereco}"/>
                         <h:outputText value="#{voluntarioController.selected.endereco}" title="#{bundle.ViewVoluntarioTitle_endereco}"/>
                         <h:outputText value="#{bundle.ViewVoluntarioLabel_telefone}"/>
@@ -24,8 +24,6 @@
                         <h:outputText value="#{voluntarioController.selected.email}" title="#{bundle.ViewVoluntarioTitle_email}"/>
                         <h:outputText value="#{bundle.ViewVoluntarioLabel_nome}"/>
                         <h:outputText value="#{voluntarioController.selected.nome}" title="#{bundle.ViewVoluntarioTitle_nome}"/>
-                        <h:outputText value="#{bundle.ViewVoluntarioLabel_codigo}"/>
-                        <h:outputText value="#{voluntarioController.selected.codigo}" title="#{bundle.ViewVoluntarioTitle_codigo}"/>
                         <h:outputText value="#{bundle.ViewVoluntarioLabel_cpf}"/>
                         <h:outputText value="#{voluntarioController.selected.cpf}" title="#{bundle.ViewVoluntarioTitle_cpf}"/>
                         <h:outputText value="#{bundle.ViewVoluntarioLabel_rg}"/>

@@ -19,7 +19,7 @@
                         <h:outputText value="#{bundle.ViewDiscenteLabel_departamento}"/>
                         <h:outputText value="#{discenteController.selected.departamento}" title="#{bundle.ViewDiscenteTitle_departamento}"/>
                         <h:outputText value="#{bundle.ViewDiscenteLabel_ativo}"/>
-                        <h:outputText value="#{discenteController.selected.ativo}" title="#{bundle.ViewDiscenteTitle_ativo}"/>
+                        <p:selectBooleanCheckbox value="#{discenteController.selected.ativo}" disabled="true"/>
                         <h:outputText value="#{bundle.ViewDiscenteLabel_endereco}"/>
                         <h:outputText value="#{discenteController.selected.endereco}" title="#{bundle.ViewDiscenteTitle_endereco}"/>
                         <h:outputText value="#{bundle.ViewDiscenteLabel_telefone}"/>
@@ -30,8 +30,6 @@
                         <h:outputText value="#{discenteController.selected.email}" title="#{bundle.ViewDiscenteTitle_email}"/>
                         <h:outputText value="#{bundle.ViewDiscenteLabel_nome}"/>
                         <h:outputText value="#{discenteController.selected.nome}" title="#{bundle.ViewDiscenteTitle_nome}"/>
-                        <h:outputText value="#{bundle.ViewDiscenteLabel_codigo}"/>
-                        <h:outputText value="#{discenteController.selected.codigo}" title="#{bundle.ViewDiscenteTitle_codigo}"/>
                         <h:outputText value="#{bundle.ViewDiscenteLabel_cpf}"/>
                         <h:outputText value="#{discenteController.selected.cpf}" title="#{bundle.ViewDiscenteTitle_cpf}"/>
                         <h:outputText value="#{bundle.ViewDiscenteLabel_rg}"/>

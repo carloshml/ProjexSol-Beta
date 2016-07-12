@@ -27,7 +27,7 @@
                                            itemValue="#{departamentoItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateDiscenteLabel_ativo}" for="ativo" />
-                        <p:inputText id="ativo" value="#{discenteController.selected.ativo}" title="#{bundle.CreateDiscenteTitle_ativo}" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{discenteController.selected.ativo}" />
                         <p:outputLabel value="#{bundle.CreateDiscenteLabel_endereco}" for="endereco" />
                         <p:selectOneMenu id="endereco" value="#{discenteController.selected.endereco}" >
                             <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
@@ -42,18 +42,14 @@
                         <p:inputText id="email" value="#{discenteController.selected.email}" title="#{bundle.CreateDiscenteTitle_email}" />
                         <p:outputLabel value="#{bundle.CreateDiscenteLabel_nome}" for="nome" />
                         <p:inputText id="nome" value="#{discenteController.selected.nome}" title="#{bundle.CreateDiscenteTitle_nome}" />
-                        <p:outputLabel value="#{bundle.CreateDiscenteLabel_codigo}" for="codigo" />
-                        <p:inputText id="codigo" value="#{discenteController.selected.codigo}" title="#{bundle.CreateDiscenteTitle_codigo}" />
                         <p:outputLabel value="#{bundle.CreateDiscenteLabel_cpf}" for="cpf" />
-                        <p:inputText id="cpf" value="#{discenteController.selected.cpf}" title="#{bundle.CreateDiscenteTitle_cpf}" />
+                        <p:inputMask mask="999.999.999-99" id="cpf" value="#{discenteController.selected.cpf}" title="#{bundle.CreateDiscenteTitle_cpf}" />
                         <p:outputLabel value="#{bundle.CreateDiscenteLabel_rg}" for="rg" />
                         <p:inputText id="rg" value="#{discenteController.selected.rg}" title="#{bundle.CreateDiscenteTitle_rg}" />
                         <p:outputLabel value="#{bundle.CreateDiscenteLabel_login}" for="login" />
                         <p:inputText id="login" value="#{discenteController.selected.login}" title="#{bundle.CreateDiscenteTitle_login}" />
                         <p:outputLabel value="#{bundle.CreateDiscenteLabel_senha}" for="senha" />
                         <p:inputText id="senha" value="#{discenteController.selected.senha}" title="#{bundle.CreateDiscenteTitle_senha}" />
-                        <p:outputLabel value="#{bundle.CreateDiscenteLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{discenteController.selected.id}" title="#{bundle.CreateDiscenteTitle_id}" required="true" requiredMessage="#{bundle.CreateDiscenteRequiredMessage_id}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{discenteController.create}" value="#{bundle.Save}" update="display,:DiscenteListForm:datalist,:growl" oncomplete="handleSubmit(args,'DiscenteCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="DiscenteCreateDialog.hide()"/>

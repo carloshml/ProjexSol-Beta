@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{administradorController.selected != null}">
                         <p:outputLabel value="#{bundle.EditAdministradorLabel_ativo}" for="ativo" />
-                        <p:inputText id="ativo" value="#{administradorController.selected.ativo}" title="#{bundle.EditAdministradorTitle_ativo}" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{administradorController.selected.ativo}" />
                         <p:outputLabel value="#{bundle.EditAdministradorLabel_endereco}" for="endereco" />
                         <p:selectOneMenu id="endereco" value="#{administradorController.selected.endereco}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -29,8 +29,6 @@
                         <p:inputText id="email" value="#{administradorController.selected.email}" title="#{bundle.EditAdministradorTitle_email}" />
                         <p:outputLabel value="#{bundle.EditAdministradorLabel_nome}" for="nome" />
                         <p:inputText id="nome" value="#{administradorController.selected.nome}" title="#{bundle.EditAdministradorTitle_nome}" />
-                        <p:outputLabel value="#{bundle.EditAdministradorLabel_codigo}" for="codigo" />
-                        <p:inputText id="codigo" value="#{administradorController.selected.codigo}" title="#{bundle.EditAdministradorTitle_codigo}" />
                         <p:outputLabel value="#{bundle.EditAdministradorLabel_cpf}" for="cpf" />
                         <p:inputText id="cpf" value="#{administradorController.selected.cpf}" title="#{bundle.EditAdministradorTitle_cpf}" />
                         <p:outputLabel value="#{bundle.EditAdministradorLabel_rg}" for="rg" />

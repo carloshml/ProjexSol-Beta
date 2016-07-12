@@ -63,7 +63,7 @@ public class ITS implements Serializable {
         this.id = id;
     }
     
-    public ITS(Integer id, String codigo, String nome, String cnpj, String tipoInstituicao, Endereco endereco, String email, String diretor, String funcao, String telefone, List<AreaDeInteresses> areasDeInteresses) {
+    public ITS( String codigo, String nome, String cnpj, String tipoInstituicao, Endereco endereco, String email, String diretor, String funcao, String telefone, List<AreaDeInteresses> areasDeInteresses) {
         this.codigo = codigo;
         this.nome = nome;
         this.cnpj = cnpj;

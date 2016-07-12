@@ -11,6 +11,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -28,17 +30,33 @@ public class VoluntarioEnsino extends Voluntario implements Serializable {
     @JoinColumn(name="DEPARTAMENTO_ID", nullable=true)
     private Departamento departamento;
     
-    public VoluntarioEnsino(Curso curso, Departamento departamento, Integer id, String ativo, String nome, String codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
-        super(id, ativo, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="VOLUNTARIO_TEM_AREASDEINTERESSE", joinColumns={ @JoinColumn(name="VOLUNTARIO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="AREASDEINTERESSES_ID", referencedColumnName="id")})
+    private List<AreaDeInteresses> areasDeInteresses;
+
+    public VoluntarioEnsino(Curso curso, Departamento departamento, List<AreaDeInteresses> areasDeInteresses, Integer id) {
+        super(id);
         this.curso = curso;
         this.departamento = departamento;
+        this.areasDeInteresses = areasDeInteresses;
     }
+
+    public VoluntarioEnsino(Curso curso, Departamento departamento, List<AreaDeInteresses> areasDeInteresses, Boolean ativo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco) {
+        super(ativo, nome, cpf, rg, login, senha, telefone, celular, email, endereco);
+        this.curso = curso;
+        this.departamento = departamento;
+        this.areasDeInteresses = areasDeInteresses;
+    }
+
+    public VoluntarioEnsino(Curso curso, Departamento departamento, List<AreaDeInteresses> areasDeInteresses) {
+        this.curso = curso;
+        this.departamento = departamento;
+        this.areasDeInteresses = areasDeInteresses;
+    }
+
     public VoluntarioEnsino(){
     }
     
-    public VoluntarioEnsino(Curso curso) {
-        this.curso = curso;
-    }    
     public Curso getCurso() {
         return curso;
     }
@@ -53,6 +71,14 @@ public class VoluntarioEnsino extends Voluntario implements Serializable {
     
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
+    }
+
+    public List<AreaDeInteresses> getAreasDeInteresses() {
+        return areasDeInteresses;
+    }
+
+    public void setAreasDeInteresses(List<AreaDeInteresses> areasDeInteresses) {
+        this.areasDeInteresses = areasDeInteresses;
     }
     
     

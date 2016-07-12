@@ -44,11 +44,14 @@ public class Curso implements Serializable {
     public Curso(Integer id) {
         this.id = id;
     }
-    
-    public Curso(Integer id, String codigo, String nome) {
+
+    public Curso(String codigo, String nome, Departamento departamento) {
         this.codigo = codigo;
         this.nome = nome;
+        this.departamento = departamento;
     }
+    
+
     public Curso(){
     }
     

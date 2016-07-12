@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{voluntarioController.selected != null}">
                         <p:outputLabel value="#{bundle.EditVoluntarioLabel_ativo}" for="ativo" />
-                        <p:inputText id="ativo" value="#{voluntarioController.selected.ativo}" title="#{bundle.EditVoluntarioTitle_ativo}" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{voluntarioController.selected.ativo}" />
                         <p:outputLabel value="#{bundle.EditVoluntarioLabel_endereco}" for="endereco" />
                         <p:selectOneMenu id="endereco" value="#{voluntarioController.selected.endereco}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -29,8 +29,6 @@
                         <p:inputText id="email" value="#{voluntarioController.selected.email}" title="#{bundle.EditVoluntarioTitle_email}" />
                         <p:outputLabel value="#{bundle.EditVoluntarioLabel_nome}" for="nome" />
                         <p:inputText id="nome" value="#{voluntarioController.selected.nome}" title="#{bundle.EditVoluntarioTitle_nome}" />
-                        <p:outputLabel value="#{bundle.EditVoluntarioLabel_codigo}" for="codigo" />
-                        <p:inputText id="codigo" value="#{voluntarioController.selected.codigo}" title="#{bundle.EditVoluntarioTitle_codigo}" />
                         <p:outputLabel value="#{bundle.EditVoluntarioLabel_cpf}" for="cpf" />
                         <p:inputText id="cpf" value="#{voluntarioController.selected.cpf}" title="#{bundle.EditVoluntarioTitle_cpf}" />
                         <p:outputLabel value="#{bundle.EditVoluntarioLabel_rg}" for="rg" />

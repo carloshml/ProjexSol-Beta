@@ -22,13 +22,13 @@
                                            itemValue="#{instituicaoTerceiroSetorItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditProjetoLabel_dataCriacao}" for="dataCriacao" />
-                        <p:calendar id="dataCriacao" pattern="MM/dd/yyyy" value="#{projetoController.selected.dataCriacao}" title="#{bundle.EditProjetoTitle_dataCriacao}"  showOn="button"/>
+                        <p:calendar id="dataCriacao" pattern="dd/MM/yyyy" value="#{projetoController.selected.dataCriacao}" title="#{bundle.EditProjetoTitle_dataCriacao}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditProjetoLabel_linhaProgramatica}" for="linhaProgramatica" />
                         <p:inputText id="linhaProgramatica" value="#{projetoController.selected.linhaProgramatica}" title="#{bundle.EditProjetoTitle_linhaProgramatica}" />
                         <p:outputLabel value="#{bundle.EditProjetoLabel_dataInicial}" for="dataInicial" />
-                        <p:calendar id="dataInicial" pattern="MM/dd/yyyy" value="#{projetoController.selected.dataInicial}" title="#{bundle.EditProjetoTitle_dataInicial}" required="true" requiredMessage="#{bundle.EditProjetoRequiredMessage_dataInicial}" showOn="button"/>
+                        <p:calendar id="dataInicial" pattern="dd/MM/yyyy" value="#{projetoController.selected.dataInicial}" title="#{bundle.EditProjetoTitle_dataInicial}" required="true" requiredMessage="#{bundle.EditProjetoRequiredMessage_dataInicial}" showOn="button"/>
                         <p:outputLabel value="#{bundle.EditProjetoLabel_dataFinal}" for="dataFinal" />
-                        <p:calendar id="dataFinal" pattern="MM/dd/yyyy" value="#{projetoController.selected.dataFinal}" title="#{bundle.EditProjetoTitle_dataFinal}" required="true" requiredMessage="#{bundle.EditProjetoRequiredMessage_dataFinal}" showOn="button"/>
+                        <p:calendar id="dataFinal" pattern="dd/MM/yyyy" value="#{projetoController.selected.dataFinal}" title="#{bundle.EditProjetoTitle_dataFinal}" required="true" requiredMessage="#{bundle.EditProjetoRequiredMessage_dataFinal}" showOn="button"/>
                         <p:outputLabel value="#{bundle.EditProjetoLabel_dadosFomento}" for="dadosFomento" />
                         <p:selectOneMenu id="dadosFomento" value="#{projetoController.selected.dadosFomento}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>

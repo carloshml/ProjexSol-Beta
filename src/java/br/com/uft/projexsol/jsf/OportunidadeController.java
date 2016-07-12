@@ -12,14 +12,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "oportunidadeController")
+@Named("oportunidadeController")
 @SessionScoped
 public class OportunidadeController implements Serializable {
 
@@ -109,6 +109,10 @@ public class OportunidadeController implements Serializable {
         }
     }
 
+    public Oportunidade getOportunidade(java.lang.Integer id) {
+        return getFacade().find(id);
+    }
+
     public List<Oportunidade> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -127,7 +131,7 @@ public class OportunidadeController implements Serializable {
             }
             OportunidadeController controller = (OportunidadeController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "oportunidadeController");
-            return controller.getFacade().find(getKey(value));
+            return controller.getOportunidade(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {

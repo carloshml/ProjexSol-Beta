@@ -62,7 +62,7 @@ public class Atividade implements Serializable {
         this.id = id;
     }
     
-    public Atividade(Integer id, String codigo, String nomeAtividae, List<Beneficiario> beneficiarios, Endereco local, String horario, Date dataInicio, Date dataFinal) {
+    public Atividade( String codigo, String nomeAtividae, List<Beneficiario> beneficiarios, Endereco local, String horario, Date dataInicio, Date dataFinal) {
         this.codigo = codigo;
         this.nomeAtividae = nomeAtividae;
         this.beneficiarios = beneficiarios;

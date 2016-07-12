@@ -12,8 +12,6 @@
             <h:form id="CursoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cursoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateCursoLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{cursoController.selected.id}" title="#{bundle.CreateCursoTitle_id}" required="true" requiredMessage="#{bundle.CreateCursoRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateCursoLabel_nome}" for="nome" />
                         <p:inputText id="nome" value="#{cursoController.selected.nome}" title="#{bundle.CreateCursoTitle_nome}" />
                         <p:outputLabel value="#{bundle.CreateCursoLabel_codigo}" for="codigo" />

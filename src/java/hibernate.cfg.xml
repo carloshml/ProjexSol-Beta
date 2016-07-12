@@ -22,6 +22,7 @@
     <mapping class="br.com.uft.projexsol.entities.Docente"/>
     <mapping class="br.com.uft.projexsol.entities.Endereco"/>
     <mapping class="br.com.uft.projexsol.entities.FomentoProjeto"/>
+    <mapping class="br.com.uft.projexsol.entities.Funcionario"/>
     <mapping class="br.com.uft.projexsol.entities.ITS"/>
     <mapping class="br.com.uft.projexsol.entities.InstituicaoDeEnsino"/>
     <mapping class="br.com.uft.projexsol.entities.Oportunidade"/>

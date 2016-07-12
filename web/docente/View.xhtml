@@ -21,7 +21,7 @@
                         <h:outputText value="#{bundle.ViewDocenteLabel_departamento}"/>
                         <h:outputText value="#{docenteController.selected.departamento}" title="#{bundle.ViewDocenteTitle_departamento}"/>
                         <h:outputText value="#{bundle.ViewDocenteLabel_ativo}"/>
-                        <h:outputText value="#{docenteController.selected.ativo}" title="#{bundle.ViewDocenteTitle_ativo}"/>
+                        <p:selectBooleanCheckbox value="#{docenteController.selected.ativo}" disabled="true"/>
                         <h:outputText value="#{bundle.ViewDocenteLabel_endereco}"/>
                         <h:outputText value="#{docenteController.selected.endereco}" title="#{bundle.ViewDocenteTitle_endereco}"/>
                         <h:outputText value="#{bundle.ViewDocenteLabel_telefone}"/>
@@ -32,8 +32,6 @@
                         <h:outputText value="#{docenteController.selected.email}" title="#{bundle.ViewDocenteTitle_email}"/>
                         <h:outputText value="#{bundle.ViewDocenteLabel_nome}"/>
                         <h:outputText value="#{docenteController.selected.nome}" title="#{bundle.ViewDocenteTitle_nome}"/>
-                        <h:outputText value="#{bundle.ViewDocenteLabel_codigo}"/>
-                        <h:outputText value="#{docenteController.selected.codigo}" title="#{bundle.ViewDocenteTitle_codigo}"/>
                         <h:outputText value="#{bundle.ViewDocenteLabel_cpf}"/>
                         <h:outputText value="#{docenteController.selected.cpf}" title="#{bundle.ViewDocenteTitle_cpf}"/>
                         <h:outputText value="#{bundle.ViewDocenteLabel_rg}"/>

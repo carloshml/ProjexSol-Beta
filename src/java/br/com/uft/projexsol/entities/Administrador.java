@@ -16,13 +16,14 @@ import javax.persistence.Entity;
 @Entity
 public class Administrador  extends Voluntario implements Serializable{
 
-    public Administrador(Curso curso, List<Disciplina> disciplinas, Integer id, String ativo, String nome, String codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
-        super(id, ativo, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
+    public Administrador(Integer id) {
+        super(id);
     }
 
+    public Administrador(Boolean ativo, String nome,  String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco) {
+        super(ativo, nome,  cpf, rg, login, senha, telefone, celular, email, endereco);
+    }
+    
     public Administrador() {
     }
-      
-  
-    
 }

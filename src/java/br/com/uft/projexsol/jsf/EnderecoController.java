@@ -12,14 +12,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "enderecoController")
+@Named("enderecoController")
 @SessionScoped
 public class EnderecoController implements Serializable {
 
@@ -109,6 +109,10 @@ public class EnderecoController implements Serializable {
         }
     }
 
+    public Endereco getEndereco(java.lang.Integer id) {
+        return getFacade().find(id);
+    }
+
     public List<Endereco> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -127,7 +131,7 @@ public class EnderecoController implements Serializable {
             }
             EnderecoController controller = (EnderecoController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "enderecoController");
-            return controller.getFacade().find(getKey(value));
+            return controller.getEndereco(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {

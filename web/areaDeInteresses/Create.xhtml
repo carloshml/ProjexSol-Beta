@@ -12,8 +12,6 @@
             <h:form id="AreaDeInteressesCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{areaDeInteressesController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateAreaDeInteressesLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{areaDeInteressesController.selected.id}" title="#{bundle.CreateAreaDeInteressesTitle_id}" required="true" requiredMessage="#{bundle.CreateAreaDeInteressesRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateAreaDeInteressesLabel_codigo}" for="codigo" />
                         <p:inputText id="codigo" value="#{areaDeInteressesController.selected.codigo}" title="#{bundle.CreateAreaDeInteressesTitle_codigo}" />
                         <p:outputLabel value="#{bundle.CreateAreaDeInteressesLabel_nome}" for="nome" />

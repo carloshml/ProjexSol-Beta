@@ -27,15 +27,31 @@ public class Discente extends VoluntarioEnsino implements Serializable {
 
     private String matricula;
 
-    public Discente(List<Disciplina> disciplinas, String matricula, Curso curso, Departamento departamento, Integer id, String ativo, String nome, String codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
-        super(curso, departamento, id, ativo, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
+    public Discente(List<Disciplina> disciplinas, String matricula, Curso curso, Departamento departamento, List<AreaDeInteresses> areasDeInteresses, Integer id) {
+        super(curso, departamento, areasDeInteresses, id);
         this.disciplinas = disciplinas;
         this.matricula = matricula;
     }
 
-    public Discente() {
+    public Discente(List<Disciplina> disciplinas, String matricula, Curso curso, Departamento departamento, List<AreaDeInteresses> areasDeInteresses, Boolean ativo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco) {
+        super(curso, departamento, areasDeInteresses, ativo, nome, cpf, rg, login, senha, telefone, celular, email, endereco);
+        this.disciplinas = disciplinas;
+        this.matricula = matricula;
     }
-    
+
+    public Discente(List<Disciplina> disciplinas, String matricula, Curso curso, Departamento departamento, List<AreaDeInteresses> areasDeInteresses) {
+        super(curso, departamento, areasDeInteresses);
+        this.disciplinas = disciplinas;
+        this.matricula = matricula;
+    }
+
+    public Discente(List<Disciplina> disciplinas, String matricula) {
+        this.disciplinas = disciplinas;
+        this.matricula = matricula;
+    }
+
+     public Discente(){}
+
     public List<Disciplina> getDisciplinas() {
         return disciplinas;
     }

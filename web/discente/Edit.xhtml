@@ -29,7 +29,7 @@
                                            itemValue="#{departamentoItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditDiscenteLabel_ativo}" for="ativo" />
-                        <p:inputText id="ativo" value="#{discenteController.selected.ativo}" title="#{bundle.EditDiscenteTitle_ativo}" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{discenteController.selected.ativo}" />
                         <p:outputLabel value="#{bundle.EditDiscenteLabel_endereco}" for="endereco" />
                         <p:selectOneMenu id="endereco" value="#{discenteController.selected.endereco}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -45,8 +45,6 @@
                         <p:inputText id="email" value="#{discenteController.selected.email}" title="#{bundle.EditDiscenteTitle_email}" />
                         <p:outputLabel value="#{bundle.EditDiscenteLabel_nome}" for="nome" />
                         <p:inputText id="nome" value="#{discenteController.selected.nome}" title="#{bundle.EditDiscenteTitle_nome}" />
-                        <p:outputLabel value="#{bundle.EditDiscenteLabel_codigo}" for="codigo" />
-                        <p:inputText id="codigo" value="#{discenteController.selected.codigo}" title="#{bundle.EditDiscenteTitle_codigo}" />
                         <p:outputLabel value="#{bundle.EditDiscenteLabel_cpf}" for="cpf" />
                         <p:inputText id="cpf" value="#{discenteController.selected.cpf}" title="#{bundle.EditDiscenteTitle_cpf}" />
                         <p:outputLabel value="#{bundle.EditDiscenteLabel_rg}" for="rg" />

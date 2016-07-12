@@ -12,8 +12,6 @@
             <h:form id="AtividadeCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{atividadeController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateAtividadeLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{atividadeController.selected.id}" title="#{bundle.CreateAtividadeTitle_id}" required="true" requiredMessage="#{bundle.CreateAtividadeRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateAtividadeLabel_codigo}" for="codigo" />
                         <p:inputText id="codigo" value="#{atividadeController.selected.codigo}" title="#{bundle.CreateAtividadeTitle_codigo}" />
                         <p:outputLabel value="#{bundle.CreateAtividadeLabel_nomeAtividae}" for="nomeAtividae" />
@@ -27,9 +25,9 @@
                         <p:outputLabel value="#{bundle.CreateAtividadeLabel_horario}" for="horario" />
                         <p:inputText id="horario" value="#{atividadeController.selected.horario}" title="#{bundle.CreateAtividadeTitle_horario}" />
                         <p:outputLabel value="#{bundle.CreateAtividadeLabel_dataInicio}" for="dataInicio" />
-                        <p:calendar id="dataInicio" pattern="MM/dd/yyyy" value="#{atividadeController.selected.dataInicio}" title="#{bundle.EditAtividadeTitle_dataInicio}"  showOn="button"/>
+                        <p:calendar id="dataInicio" pattern="dd/MM/yyyy" value="#{atividadeController.selected.dataInicio}" title="#{bundle.EditAtividadeTitle_dataInicio}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateAtividadeLabel_dataFinal}" for="dataFinal" />
-                        <p:calendar id="dataFinal" pattern="MM/dd/yyyy" value="#{atividadeController.selected.dataFinal}" title="#{bundle.EditAtividadeTitle_dataFinal}"  showOn="button"/>
+                        <p:calendar id="dataFinal" pattern="dd/MM/yyyy" value="#{atividadeController.selected.dataFinal}" title="#{bundle.EditAtividadeTitle_dataFinal}"  showOn="button"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{atividadeController.create}" value="#{bundle.Save}" update="display,:AtividadeListForm:datalist,:growl" oncomplete="handleSubmit(args,'AtividadeCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="AtividadeCreateDialog.hide()"/>

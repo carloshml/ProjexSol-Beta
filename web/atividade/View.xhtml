@@ -24,11 +24,11 @@
                         <h:outputText value="#{atividadeController.selected.horario}" title="#{bundle.ViewAtividadeTitle_horario}"/>
                         <h:outputText value="#{bundle.ViewAtividadeLabel_dataInicio}"/>
                         <h:outputText value="#{atividadeController.selected.dataInicio}" title="#{bundle.ViewAtividadeTitle_dataInicio}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewAtividadeLabel_dataFinal}"/>
                         <h:outputText value="#{atividadeController.selected.dataFinal}" title="#{bundle.ViewAtividadeTitle_dataFinal}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:outputText>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="AtividadeViewDialog.hide()"/>

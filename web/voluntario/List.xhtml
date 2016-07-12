@@ -31,7 +31,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListVoluntarioTitle_ativo}"/>
                             </f:facet>
-                            <h:outputText value="#{item.ativo}"/>
+                            <p:selectBooleanCheckbox value="#{item.ativo}" disabled="true"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -62,12 +62,6 @@
                                 <h:outputText value="#{bundle.ListVoluntarioTitle_nome}"/>
                             </f:facet>
                             <h:outputText value="#{item.nome}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListVoluntarioTitle_codigo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.codigo}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

@@ -19,14 +19,24 @@ public class Docente extends VoluntarioEnsino implements Serializable{
     private String qualificacao;
     private String cargaHoraria;
 
-    public Docente(String qualificacao, String cargaHoraria, Curso curso, Departamento departamento, Integer id, String ativo, String nome, String codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
-        super(curso, departamento, id, ativo, nome, codigo, cpf, rg, login, senha, telefone, celular, email, endereco, areasDeInteresses);
+    public Docente(String qualificacao, String cargaHoraria, Curso curso, Departamento departamento, List<AreaDeInteresses> areasDeInteresses, Integer id) {
+        super(curso, departamento, areasDeInteresses, id);
         this.qualificacao = qualificacao;
         this.cargaHoraria = cargaHoraria;
     }
-    
-    public Docente() {
-     }
+
+    public Docente(String qualificacao, String cargaHoraria, Curso curso, Departamento departamento, List<AreaDeInteresses> areasDeInteresses, Boolean ativo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco) {
+        super(curso, departamento, areasDeInteresses, ativo, nome, cpf, rg, login, senha, telefone, celular, email, endereco);
+        this.qualificacao = qualificacao;
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public Docente(String qualificacao, String cargaHoraria) {
+        this.qualificacao = qualificacao;
+        this.cargaHoraria = cargaHoraria;
+    }
+     public Docente(){}
+
 
     public String getQualificacao() {
         return qualificacao;

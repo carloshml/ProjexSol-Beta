@@ -1,9 +1,9 @@
 package br.com.uft.projexsol.jsf;
 
-import br.com.uft.projexsol.entities.AreaDeInteresses;
+import br.com.uft.projexsol.entities.Funcionario;
 import br.com.uft.projexsol.jsf.util.JsfUtil;
 import br.com.uft.projexsol.jsf.util.JsfUtil.PersistAction;
-import br.com.uft.projexsol.jpa.session.AreaDeInteressesFacade;
+import br.com.uft.projexsol.jpa.session.FuncionarioFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,23 +19,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("areaDeInteressesController")
+@Named("funcionarioController")
 @SessionScoped
-public class AreaDeInteressesController implements Serializable {
+public class FuncionarioController implements Serializable {
 
     @EJB
-    private br.com.uft.projexsol.jpa.session.AreaDeInteressesFacade ejbFacade;
-    private List<AreaDeInteresses> items = null;
-    private AreaDeInteresses selected;
+    private br.com.uft.projexsol.jpa.session.FuncionarioFacade ejbFacade;
+    private List<Funcionario> items = null;
+    private Funcionario selected;
 
-    public AreaDeInteressesController() {
+    public FuncionarioController() {
     }
 
-    public AreaDeInteresses getSelected() {
+    public Funcionario getSelected() {
         return selected;
     }
 
-    public void setSelected(AreaDeInteresses selected) {
+    public void setSelected(Funcionario selected) {
         this.selected = selected;
     }
 
@@ -45,36 +45,36 @@ public class AreaDeInteressesController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private AreaDeInteressesFacade getFacade() {
+    private FuncionarioFacade getFacade() {
         return ejbFacade;
     }
 
-    public AreaDeInteresses prepareCreate() {
-        selected = new AreaDeInteresses();
+    public Funcionario prepareCreate() {
+        selected = new Funcionario();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("resources/Bundle").getString("AreaDeInteressesCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("resources/Bundle").getString("FuncionarioCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("resources/Bundle").getString("AreaDeInteressesUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("resources/Bundle").getString("FuncionarioUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("resources/Bundle").getString("AreaDeInteressesDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("resources/Bundle").getString("FuncionarioDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<AreaDeInteresses> getItems() {
+    public List<Funcionario> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -109,38 +109,38 @@ public class AreaDeInteressesController implements Serializable {
         }
     }
 
-    public AreaDeInteresses getAreaDeInteresses(java.lang.Integer id) {
+    public Funcionario getFuncionario(java.lang.Long id) {
         return getFacade().find(id);
     }
 
-    public List<AreaDeInteresses> getItemsAvailableSelectMany() {
+    public List<Funcionario> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<AreaDeInteresses> getItemsAvailableSelectOne() {
+    public List<Funcionario> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = AreaDeInteresses.class)
-    public static class AreaDeInteressesControllerConverter implements Converter {
+    @FacesConverter(forClass = Funcionario.class)
+    public static class FuncionarioControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            AreaDeInteressesController controller = (AreaDeInteressesController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "areaDeInteressesController");
-            return controller.getAreaDeInteresses(getKey(value));
+            FuncionarioController controller = (FuncionarioController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "funcionarioController");
+            return controller.getFuncionario(getKey(value));
         }
 
-        java.lang.Integer getKey(String value) {
-            java.lang.Integer key;
-            key = Integer.valueOf(value);
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = Long.valueOf(value);
             return key;
         }
 
-        String getStringKey(java.lang.Integer value) {
+        String getStringKey(java.lang.Long value) {
             StringBuilder sb = new StringBuilder();
             sb.append(value);
             return sb.toString();
@@ -151,11 +151,11 @@ public class AreaDeInteressesController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof AreaDeInteresses) {
-                AreaDeInteresses o = (AreaDeInteresses) object;
+            if (object instanceof Funcionario) {
+                Funcionario o = (Funcionario) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), AreaDeInteresses.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Funcionario.class.getName()});
                 return null;
             }
         }

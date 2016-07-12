@@ -12,8 +12,6 @@
             <h:form id="FomentoProjetoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{fomentoProjetoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateFomentoProjetoLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{fomentoProjetoController.selected.id}" title="#{bundle.CreateFomentoProjetoTitle_id}" required="true" requiredMessage="#{bundle.CreateFomentoProjetoRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateFomentoProjetoLabel_descricao}" for="descricao" />
                         <p:inputText id="descricao" value="#{fomentoProjetoController.selected.descricao}" title="#{bundle.CreateFomentoProjetoTitle_descricao}" />
                         <p:outputLabel value="#{bundle.CreateFomentoProjetoLabel_origens}" for="origens" />

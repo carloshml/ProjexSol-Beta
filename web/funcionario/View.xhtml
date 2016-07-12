@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FuncionarioViewDlg" widgetVar="FuncionarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFuncionarioTitle}">
+            <h:form id="FuncionarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{funcionarioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFuncionarioLabel_id}"/>
+                        <h:outputText value="#{funcionarioController.selected.id}" title="#{bundle.ViewFuncionarioTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewFuncionarioLabel_nome}"/>
+                        <h:outputText value="#{funcionarioController.selected.nome}" title="#{bundle.ViewFuncionarioTitle_nome}"/>
+                        <h:outputText value="#{bundle.ViewFuncionarioLabel_funcao}"/>
+                        <h:outputText value="#{funcionarioController.selected.funcao}" title="#{bundle.ViewFuncionarioTitle_funcao}"/>
+                        <h:outputText value="#{bundle.ViewFuncionarioLabel_cpf}"/>
+                        <h:outputText value="#{funcionarioController.selected.cpf}" title="#{bundle.ViewFuncionarioTitle_cpf}"/>
+                        <h:outputText value="#{bundle.ViewFuncionarioLabel_rg}"/>
+                        <h:outputText value="#{funcionarioController.selected.rg}" title="#{bundle.ViewFuncionarioTitle_rg}"/>
+                        <h:outputText value="#{bundle.ViewFuncionarioLabel_telefone}"/>
+                        <h:outputText value="#{funcionarioController.selected.telefone}" title="#{bundle.ViewFuncionarioTitle_telefone}"/>
+                        <h:outputText value="#{bundle.ViewFuncionarioLabel_celular}"/>
+                        <h:outputText value="#{funcionarioController.selected.celular}" title="#{bundle.ViewFuncionarioTitle_celular}"/>
+                        <h:outputText value="#{bundle.ViewFuncionarioLabel_email}"/>
+                        <h:outputText value="#{funcionarioController.selected.email}" title="#{bundle.ViewFuncionarioTitle_email}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FuncionarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

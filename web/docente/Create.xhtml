@@ -29,7 +29,7 @@
                                            itemValue="#{departamentoItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateDocenteLabel_ativo}" for="ativo" />
-                        <p:inputText id="ativo" value="#{docenteController.selected.ativo}" title="#{bundle.CreateDocenteTitle_ativo}" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{docenteController.selected.ativo}" />
                         <p:outputLabel value="#{bundle.CreateDocenteLabel_endereco}" for="endereco" />
                         <p:selectOneMenu id="endereco" value="#{docenteController.selected.endereco}" >
                             <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
@@ -44,18 +44,14 @@
                         <p:inputText id="email" value="#{docenteController.selected.email}" title="#{bundle.CreateDocenteTitle_email}" />
                         <p:outputLabel value="#{bundle.CreateDocenteLabel_nome}" for="nome" />
                         <p:inputText id="nome" value="#{docenteController.selected.nome}" title="#{bundle.CreateDocenteTitle_nome}" />
-                        <p:outputLabel value="#{bundle.CreateDocenteLabel_codigo}" for="codigo" />
-                        <p:inputText id="codigo" value="#{docenteController.selected.codigo}" title="#{bundle.CreateDocenteTitle_codigo}" />
                         <p:outputLabel value="#{bundle.CreateDocenteLabel_cpf}" for="cpf" />
-                        <p:inputText id="cpf" value="#{docenteController.selected.cpf}" title="#{bundle.CreateDocenteTitle_cpf}" />
+                        <p:inputMask mask="999.999.999-99" id="cpf" value="#{docenteController.selected.cpf}" title="#{bundle.CreateDocenteTitle_cpf}" />
                         <p:outputLabel value="#{bundle.CreateDocenteLabel_rg}" for="rg" />
                         <p:inputText id="rg" value="#{docenteController.selected.rg}" title="#{bundle.CreateDocenteTitle_rg}" />
                         <p:outputLabel value="#{bundle.CreateDocenteLabel_login}" for="login" />
                         <p:inputText id="login" value="#{docenteController.selected.login}" title="#{bundle.CreateDocenteTitle_login}" />
                         <p:outputLabel value="#{bundle.CreateDocenteLabel_senha}" for="senha" />
                         <p:inputText id="senha" value="#{docenteController.selected.senha}" title="#{bundle.CreateDocenteTitle_senha}" />
-                        <p:outputLabel value="#{bundle.CreateDocenteLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{docenteController.selected.id}" title="#{bundle.CreateDocenteTitle_id}" required="true" requiredMessage="#{bundle.CreateDocenteRequiredMessage_id}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{docenteController.create}" value="#{bundle.Save}" update="display,:DocenteListForm:datalist,:growl" oncomplete="handleSubmit(args,'DocenteCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="DocenteCreateDialog.hide()"/>

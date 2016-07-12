@@ -37,7 +37,7 @@ public class Beneficiario implements Serializable {
         this.id = id;
     }
     
-    public Beneficiario(Integer id,  String nomeCompleto, String rg) {
+    public Beneficiario(  String nomeCompleto, String rg) {
          this.nomeCompleto = nomeCompleto;
         this.rg = rg;
     }

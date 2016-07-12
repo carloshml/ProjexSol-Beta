@@ -12,8 +12,6 @@
             <h:form id="InstituicaoDeEnsinoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{instituicaoDeEnsinoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateInstituicaoDeEnsinoLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{instituicaoDeEnsinoController.selected.id}" title="#{bundle.CreateInstituicaoDeEnsinoTitle_id}" required="true" requiredMessage="#{bundle.CreateInstituicaoDeEnsinoRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateInstituicaoDeEnsinoLabel_codigo}" for="codigo" />
                         <p:inputText id="codigo" value="#{instituicaoDeEnsinoController.selected.codigo}" title="#{bundle.CreateInstituicaoDeEnsinoTitle_codigo}" />
                         <p:outputLabel value="#{bundle.CreateInstituicaoDeEnsinoLabel_nome}" for="nome" />

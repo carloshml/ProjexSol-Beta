@@ -31,7 +31,7 @@
                                            itemValue="#{departamentoItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditDocenteLabel_ativo}" for="ativo" />
-                        <p:inputText id="ativo" value="#{docenteController.selected.ativo}" title="#{bundle.EditDocenteTitle_ativo}" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{docenteController.selected.ativo}" />
                         <p:outputLabel value="#{bundle.EditDocenteLabel_endereco}" for="endereco" />
                         <p:selectOneMenu id="endereco" value="#{docenteController.selected.endereco}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -47,8 +47,6 @@
                         <p:inputText id="email" value="#{docenteController.selected.email}" title="#{bundle.EditDocenteTitle_email}" />
                         <p:outputLabel value="#{bundle.EditDocenteLabel_nome}" for="nome" />
                         <p:inputText id="nome" value="#{docenteController.selected.nome}" title="#{bundle.EditDocenteTitle_nome}" />
-                        <p:outputLabel value="#{bundle.EditDocenteLabel_codigo}" for="codigo" />
-                        <p:inputText id="codigo" value="#{docenteController.selected.codigo}" title="#{bundle.EditDocenteTitle_codigo}" />
                         <p:outputLabel value="#{bundle.EditDocenteLabel_cpf}" for="cpf" />
                         <p:inputText id="cpf" value="#{docenteController.selected.cpf}" title="#{bundle.EditDocenteTitle_cpf}" />
                         <p:outputLabel value="#{bundle.EditDocenteLabel_rg}" for="rg" />

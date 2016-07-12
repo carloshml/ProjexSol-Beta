@@ -29,16 +29,22 @@
 
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetoTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetoTitle_instituicaoTerceiroSetor}"/>
                             </f:facet>
-                            <h:outputText value="#{item.instituicaoTerceiroSetor}"/>
+                            <h:outputText value="#{item.instituicaoTerceiroSetor.nome}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetoTitle_dataCriacao}"/>
                             </f:facet>
                             <h:outputText value="#{item.dataCriacao}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column>
@@ -52,7 +58,7 @@
                                 <h:outputText value="#{bundle.ListProjetoTitle_dataInicial}"/>
                             </f:facet>
                             <h:outputText value="#{item.dataInicial}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column>
@@ -60,14 +66,14 @@
                                 <h:outputText value="#{bundle.ListProjetoTitle_dataFinal}"/>
                             </f:facet>
                             <h:outputText value="#{item.dataFinal}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetoTitle_dadosFomento}"/>
                             </f:facet>
-                            <h:outputText value="#{item.dadosFomento}"/>
+                            <h:outputText value="#{item.dadosFomento.origens}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -79,7 +85,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetoTitle_gerenteProjeto}"/>
                             </f:facet>
-                            <h:outputText value="#{item.gerenteProjeto}"/>
+                            <h:outputText value="#{item.gerenteProjeto.nome}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

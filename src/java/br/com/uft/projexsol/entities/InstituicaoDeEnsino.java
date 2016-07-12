@@ -57,7 +57,7 @@ public class InstituicaoDeEnsino implements Serializable {
         this.id = id;
     }
     
-    public InstituicaoDeEnsino(Integer id, String codigo, String nome, String cnpj, Endereco endereco, String email, String estado, String telefone, List<Departamento> departamentos) {
+    public InstituicaoDeEnsino( String codigo, String nome, String cnpj, Endereco endereco, String email, String estado, String telefone, List<Departamento> departamentos) {
         this.codigo = codigo;
         this.nome = nome;
         this.cnpj = cnpj;

@@ -62,7 +62,10 @@ public class Acao implements Serializable {
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinTable(name="ACAO_TEM_ATIVIDADES", joinColumns={ @JoinColumn(name="ACAO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="ATIVIDADES_ID", referencedColumnName="id")})
     private List<Atividade> atividades;
-    
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="ACAO_TEM_FUNCIONARIOS", joinColumns={ @JoinColumn(name="ACAO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="FUNCIONARIO_ID", referencedColumnName="id")})
+    private List<Funcionario> funcionario;
+
      public Integer getId() {
         return id;
     }
@@ -71,16 +74,19 @@ public class Acao implements Serializable {
         this.id = id;
     }
 
-
-    public Acao(String codigo, String nome, Date dataInicial, Date dataFinal, String tipo, String descricao) {
+    public Acao(String codigo, String nome, Date dataInicial, Date dataFinal, String tipo, String descricao, List<Atividade> atividades, List<Funcionario> funcionario) {
         this.codigo = codigo;
         this.nome = nome;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
         this.tipo = tipo;
         this.descricao = descricao;
-        atividades = new ArrayList<>();
+        this.atividades = atividades;
+        this.funcionario = funcionario;
     }
+
+
+
         
     public Acao() {
     }
@@ -140,7 +146,13 @@ public class Acao implements Serializable {
     public void setAtividades(List<Atividade> atividades) {
         this.atividades = atividades;
     }
+    public List<Funcionario> getFuncionario() {
+        return funcionario;
+    }
 
+    public void setFuncionario(List<Funcionario> funcionario) {
+        this.funcionario = funcionario;
+    }
     @Override
     public int hashCode() {
         int hash = 7;
@@ -168,7 +180,7 @@ public class Acao implements Serializable {
 
     @Override
     public String toString() {
-        return "Acao{" + "nome=" + nome + ", descricao=" + descricao + '}';
+        return "nome=" + nome + ", descricao=" + descricao + '}';
     }
 
 }

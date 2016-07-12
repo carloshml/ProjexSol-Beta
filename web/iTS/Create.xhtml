@@ -12,14 +12,12 @@
             <h:form id="ITSCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{iTSController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateITSLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{iTSController.selected.id}" title="#{bundle.CreateITSTitle_id}" required="true" requiredMessage="#{bundle.CreateITSRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateITSLabel_codigo}" for="codigo" />
                         <p:inputText id="codigo" value="#{iTSController.selected.codigo}" title="#{bundle.CreateITSTitle_codigo}" />
                         <p:outputLabel value="#{bundle.CreateITSLabel_nome}" for="nome" />
                         <p:inputText id="nome" value="#{iTSController.selected.nome}" title="#{bundle.CreateITSTitle_nome}" />
                         <p:outputLabel value="#{bundle.CreateITSLabel_cnpj}" for="cnpj" />
-                        <p:inputText id="cnpj" value="#{iTSController.selected.cnpj}" title="#{bundle.CreateITSTitle_cnpj}" />
+                        <p:inputMask mask="99.999.999/9999-99" id="cnpj" value="#{iTSController.selected.cnpj}" title="#{bundle.CreateITSTitle_cnpj}" />
                         <p:outputLabel value="#{bundle.CreateITSLabel_tipoInstituicao}" for="tipoInstituicao" />
                         <p:inputText id="tipoInstituicao" value="#{iTSController.selected.tipoInstituicao}" title="#{bundle.CreateITSTitle_tipoInstituicao}" />
                         <p:outputLabel value="#{bundle.CreateITSLabel_endereco}" for="endereco" />

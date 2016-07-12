@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{administradorController.selected != null}">
                         <h:outputText value="#{bundle.ViewAdministradorLabel_ativo}"/>
-                        <h:outputText value="#{administradorController.selected.ativo}" title="#{bundle.ViewAdministradorTitle_ativo}"/>
+                        <p:selectBooleanCheckbox value="#{administradorController.selected.ativo}" disabled="true"/>
                         <h:outputText value="#{bundle.ViewAdministradorLabel_endereco}"/>
                         <h:outputText value="#{administradorController.selected.endereco}" title="#{bundle.ViewAdministradorTitle_endereco}"/>
                         <h:outputText value="#{bundle.ViewAdministradorLabel_telefone}"/>
@@ -24,8 +24,6 @@
                         <h:outputText value="#{administradorController.selected.email}" title="#{bundle.ViewAdministradorTitle_email}"/>
                         <h:outputText value="#{bundle.ViewAdministradorLabel_nome}"/>
                         <h:outputText value="#{administradorController.selected.nome}" title="#{bundle.ViewAdministradorTitle_nome}"/>
-                        <h:outputText value="#{bundle.ViewAdministradorLabel_codigo}"/>
-                        <h:outputText value="#{administradorController.selected.codigo}" title="#{bundle.ViewAdministradorTitle_codigo}"/>
                         <h:outputText value="#{bundle.ViewAdministradorLabel_cpf}"/>
                         <h:outputText value="#{administradorController.selected.cpf}" title="#{bundle.ViewAdministradorTitle_cpf}"/>
                         <h:outputText value="#{bundle.ViewAdministradorLabel_rg}"/>

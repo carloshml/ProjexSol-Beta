@@ -28,9 +28,9 @@
                         <p:outputLabel value="#{bundle.EditAtividadeLabel_horario}" for="horario" />
                         <p:inputText id="horario" value="#{atividadeController.selected.horario}" title="#{bundle.EditAtividadeTitle_horario}" />
                         <p:outputLabel value="#{bundle.EditAtividadeLabel_dataInicio}" for="dataInicio" />
-                        <p:calendar id="dataInicio" pattern="MM/dd/yyyy" value="#{atividadeController.selected.dataInicio}" title="#{bundle.EditAtividadeTitle_dataInicio}"  showOn="button"/>
+                        <p:calendar id="dataInicio" pattern="dd/MM/yyyy" value="#{atividadeController.selected.dataInicio}" title="#{bundle.EditAtividadeTitle_dataInicio}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditAtividadeLabel_dataFinal}" for="dataFinal" />
-                        <p:calendar id="dataFinal" pattern="MM/dd/yyyy" value="#{atividadeController.selected.dataFinal}" title="#{bundle.EditAtividadeTitle_dataFinal}"  showOn="button"/>
+                        <p:calendar id="dataFinal" pattern="dd/MM/yyyy" value="#{atividadeController.selected.dataFinal}" title="#{bundle.EditAtividadeTitle_dataFinal}"  showOn="button"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{atividadeController.update}" value="#{bundle.Save}" update="display,:AtividadeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AtividadeEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="AtividadeEditDialog.hide()"/>

@@ -40,7 +40,7 @@ public class AreaDeInteresses implements Serializable {
         this.id = id;
     }
 
-    public AreaDeInteresses(Integer id, String codigo, String nome, String descricao) {
+    public AreaDeInteresses( String codigo, String nome, String descricao) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;

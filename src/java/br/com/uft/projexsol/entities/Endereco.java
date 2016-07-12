@@ -29,7 +29,7 @@ public class Endereco implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 10)
+    @Size(max = 70)
     private String logradouro;
     @Size(max = 40)
     private String bairro;
@@ -45,8 +45,8 @@ public class Endereco implements Serializable {
     public Endereco(Integer id) {
         this.id = id;
     }
-    
-    public Endereco(Integer id, int codigo, String logradouro, String bairro, String uf, String cidade, String cep, String numero) {
+
+    public Endereco(String logradouro, String bairro, String uf, String cidade, String cep, String numero) {
         this.logradouro = logradouro;
         this.bairro = bairro;
         this.uf = uf;

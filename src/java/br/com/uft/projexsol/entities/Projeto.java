@@ -87,8 +87,11 @@ public class Projeto implements Serializable  {
     @JoinTable(name="PROJETO_TEM_AvALIACOES", joinColumns={ @JoinColumn(name="PROJETO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="AVALIACOES_ID", referencedColumnName="id")})
     private List<Avaliacao> avaliacoesProjeto;
 
-    public Projeto(Integer id, int codigo, Voluntario gerenteProjeto, double custoProjeto, DetalhesProjeto detalhes, Date dataCriacao, String linhaProgramatica, String areaDirex, String linhaDirex, String numOrdemDirex, String numRegistroDirex, Date dataInicial, Date dataFinal, List<AreaDeInteresses> areasDeInteresses, FomentoProjeto dadosFomento, List<Acao> acoes, boolean autorizado, List<Oportunidade> oportunidades, ITS instituicaoTerceiroSetor, List<Avaliacao> avaliacoesProjeto) {
+    public Projeto(Integer id) {
         this.id = id;
+    }
+
+    public Projeto( int codigo, Voluntario gerenteProjeto, double custoProjeto, DetalhesProjeto detalhes, Date dataCriacao, String linhaProgramatica, String areaDirex, String linhaDirex, String numOrdemDirex, String numRegistroDirex, Date dataInicial, Date dataFinal, List<AreaDeInteresses> areasDeInteresses, FomentoProjeto dadosFomento, List<Acao> acoes, boolean autorizado, List<Oportunidade> oportunidades, ITS instituicaoTerceiroSetor, List<Avaliacao> avaliacoesProjeto) {
         this.codigo = codigo;
         this.gerenteProjeto = gerenteProjeto;
         this.custoProjeto = custoProjeto;

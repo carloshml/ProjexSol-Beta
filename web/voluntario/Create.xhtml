@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{voluntarioController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateVoluntarioLabel_ativo}" for="ativo" />
-                        <p:inputText id="ativo" value="#{voluntarioController.selected.ativo}" title="#{bundle.CreateVoluntarioTitle_ativo}" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{voluntarioController.selected.ativo}" />
                         <p:outputLabel value="#{bundle.CreateVoluntarioLabel_endereco}" for="endereco" />
                         <p:selectOneMenu id="endereco" value="#{voluntarioController.selected.endereco}" >
                             <f:selectItems value="#{enderecoController.itemsAvailableSelectOne}"
@@ -28,18 +28,14 @@
                         <p:inputText id="email" value="#{voluntarioController.selected.email}" title="#{bundle.CreateVoluntarioTitle_email}" />
                         <p:outputLabel value="#{bundle.CreateVoluntarioLabel_nome}" for="nome" />
                         <p:inputText id="nome" value="#{voluntarioController.selected.nome}" title="#{bundle.CreateVoluntarioTitle_nome}" />
-                        <p:outputLabel value="#{bundle.CreateVoluntarioLabel_codigo}" for="codigo" />
-                        <p:inputText id="codigo" value="#{voluntarioController.selected.codigo}" title="#{bundle.CreateVoluntarioTitle_codigo}" />
                         <p:outputLabel value="#{bundle.CreateVoluntarioLabel_cpf}" for="cpf" />
-                        <p:inputText id="cpf" value="#{voluntarioController.selected.cpf}" title="#{bundle.CreateVoluntarioTitle_cpf}" />
+                        <p:inputMask mask="999.999.999-99" id="cpf" value="#{voluntarioController.selected.cpf}" title="#{bundle.CreateVoluntarioTitle_cpf}" />
                         <p:outputLabel value="#{bundle.CreateVoluntarioLabel_rg}" for="rg" />
                         <p:inputText id="rg" value="#{voluntarioController.selected.rg}" title="#{bundle.CreateVoluntarioTitle_rg}" />
                         <p:outputLabel value="#{bundle.CreateVoluntarioLabel_login}" for="login" />
                         <p:inputText id="login" value="#{voluntarioController.selected.login}" title="#{bundle.CreateVoluntarioTitle_login}" />
                         <p:outputLabel value="#{bundle.CreateVoluntarioLabel_senha}" for="senha" />
                         <p:inputText id="senha" value="#{voluntarioController.selected.senha}" title="#{bundle.CreateVoluntarioTitle_senha}" />
-                        <p:outputLabel value="#{bundle.CreateVoluntarioLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{voluntarioController.selected.id}" title="#{bundle.CreateVoluntarioTitle_id}" required="true" requiredMessage="#{bundle.CreateVoluntarioRequiredMessage_id}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{voluntarioController.create}" value="#{bundle.Save}" update="display,:VoluntarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'VoluntarioCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="VoluntarioCreateDialog.hide()"/>

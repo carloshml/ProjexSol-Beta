@@ -48,9 +48,13 @@ public class Oportunidade implements Serializable {
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinTable(name="OPORTUNIDADES_TEM_VOLUNTARIOS", joinColumns={ @JoinColumn(name="OPORTUNIDADE_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="VOLUNTATIOS_ID", referencedColumnName="id")})
     private List<Voluntario> voluntarios;
-    
-    public Oportunidade(Integer id, String codigo, String nome, String descricao, List<AreaDeInteresses> areaDeInteresses, List<Voluntario> voluntarios) {
+
+    public Oportunidade(Integer id) {
         this.id = id;
+    }
+    
+    
+    public Oportunidade( String codigo, String nome, String descricao, List<AreaDeInteresses> areaDeInteresses, List<Voluntario> voluntarios) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;

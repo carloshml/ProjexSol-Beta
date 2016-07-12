@@ -12,8 +12,6 @@
             <h:form id="ProjetoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{projetoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateProjetoLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{projetoController.selected.id}" title="#{bundle.CreateProjetoTitle_id}" required="true" requiredMessage="#{bundle.CreateProjetoRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateProjetoLabel_instituicaoTerceiroSetor}" for="instituicaoTerceiroSetor" />
                         <p:selectOneMenu id="instituicaoTerceiroSetor" value="#{projetoController.selected.instituicaoTerceiroSetor}" >
                             <f:selectItems value="#{iTSController.itemsAvailableSelectOne}"
@@ -21,13 +19,13 @@
                                            itemValue="#{instituicaoTerceiroSetorItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateProjetoLabel_dataCriacao}" for="dataCriacao" />
-                        <p:calendar id="dataCriacao" pattern="MM/dd/yyyy" value="#{projetoController.selected.dataCriacao}" title="#{bundle.EditProjetoTitle_dataCriacao}"  showOn="button"/>
+                        <p:calendar id="dataCriacao" pattern="dd/MM/yyyy" value="#{projetoController.selected.dataCriacao}" title="#{bundle.EditProjetoTitle_dataCriacao}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateProjetoLabel_linhaProgramatica}" for="linhaProgramatica" />
                         <p:inputText id="linhaProgramatica" value="#{projetoController.selected.linhaProgramatica}" title="#{bundle.CreateProjetoTitle_linhaProgramatica}" />
                         <p:outputLabel value="#{bundle.CreateProjetoLabel_dataInicial}" for="dataInicial" />
-                        <p:calendar id="dataInicial" pattern="MM/dd/yyyy" value="#{projetoController.selected.dataInicial}" title="#{bundle.EditProjetoTitle_dataInicial}" required="true" requiredMessage="#{bundle.EditProjetoRequiredMessage_dataInicial}" showOn="button"/>
+                        <p:calendar id="dataInicial" pattern="dd/MM/yyyy" value="#{projetoController.selected.dataInicial}" title="#{bundle.EditProjetoTitle_dataInicial}" required="true" requiredMessage="#{bundle.EditProjetoRequiredMessage_dataInicial}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateProjetoLabel_dataFinal}" for="dataFinal" />
-                        <p:calendar id="dataFinal" pattern="MM/dd/yyyy" value="#{projetoController.selected.dataFinal}" title="#{bundle.EditProjetoTitle_dataFinal}" required="true" requiredMessage="#{bundle.EditProjetoRequiredMessage_dataFinal}" showOn="button"/>
+                        <p:calendar id="dataFinal" pattern="dd/MM/yyyy" value="#{projetoController.selected.dataFinal}" title="#{bundle.EditProjetoTitle_dataFinal}" required="true" requiredMessage="#{bundle.EditProjetoRequiredMessage_dataFinal}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateProjetoLabel_dadosFomento}" for="dadosFomento" />
                         <p:selectOneMenu id="dadosFomento" value="#{projetoController.selected.dadosFomento}" >
                             <f:selectItems value="#{fomentoProjetoController.itemsAvailableSelectOne}"

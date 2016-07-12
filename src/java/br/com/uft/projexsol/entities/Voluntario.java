@@ -6,7 +6,6 @@
 package br.com.uft.projexsol.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -17,8 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -37,12 +34,10 @@ public class Voluntario implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Column
-    private String ativo;
+    private Boolean ativo;
     @Column
     private String nome;
-    @Column(name = "codigo")
-    private String codigo;
-    @Column
+    @Size(max = 15)
     private String cpf;
     @Column
     private String rg;
@@ -59,15 +54,14 @@ public class Voluntario implements Serializable {
     @OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name="ENDERECO_ID", nullable=true)
     private Endereco endereco;
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinTable(name="VOLUNTARIO_TEM_AREASDEINTERESSE", joinColumns={ @JoinColumn(name="VOLUNTARIO_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="AREASDEINTERESSES_ID", referencedColumnName="id")})
-    private List<AreaDeInteresses> areasDeInteresses;
 
-    public Voluntario(Integer id, String ativo, String nome, String codigo, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco, List<AreaDeInteresses> areasDeInteresses) {
+    public Voluntario(Integer id) {
         this.id = id;
+    }
+
+    public Voluntario(Boolean ativo, String nome, String cpf, String rg, String login, String senha, String telefone, String celular, String email, Endereco endereco) {
         this.ativo = ativo;
         this.nome = nome;
-        this.codigo = codigo;
         this.cpf = cpf;
         this.rg = rg;
         this.login = login;
@@ -76,17 +70,17 @@ public class Voluntario implements Serializable {
         this.celular = celular;
         this.email = email;
         this.endereco = endereco;
-        this.areasDeInteresses = areasDeInteresses;
     }
-    
-    public Voluntario(){
+
+    public Voluntario() {
     }
-    
-    public String getAtivo() {
+
+
+    public Boolean getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(String ativo) {
+    public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
     public Endereco getEndereco() {
@@ -128,15 +122,7 @@ public class Voluntario implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    public String getCodigo() {
-        return codigo;
-    }
-    
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-    
+ 
     public String getCpf() {
         return cpf;
     }
@@ -176,14 +162,6 @@ public class Voluntario implements Serializable {
         this.id = id;
     }
     
-    public List<AreaDeInteresses> getAreasDeInteresses() {
-        return areasDeInteresses;
-    }
-    
-    public void setAreasDeInteresses(List<AreaDeInteresses> areasDeInteresses) {
-        this.areasDeInteresses = areasDeInteresses;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;

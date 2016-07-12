@@ -12,8 +12,6 @@
             <h:form id="AvaliacaoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{avaliacaoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateAvaliacaoLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{avaliacaoController.selected.id}" title="#{bundle.CreateAvaliacaoTitle_id}" required="true" requiredMessage="#{bundle.CreateAvaliacaoRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateAvaliacaoLabel_descricao}" for="descricao" />
                         <p:inputText id="descricao" value="#{avaliacaoController.selected.descricao}" title="#{bundle.CreateAvaliacaoTitle_descricao}" />
                     </p:panelGrid>

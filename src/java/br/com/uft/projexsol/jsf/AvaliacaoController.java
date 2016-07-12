@@ -12,14 +12,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "avaliacaoController")
+@Named("avaliacaoController")
 @SessionScoped
 public class AvaliacaoController implements Serializable {
 
@@ -109,6 +109,10 @@ public class AvaliacaoController implements Serializable {
         }
     }
 
+    public Avaliacao getAvaliacao(java.lang.Integer id) {
+        return getFacade().find(id);
+    }
+
     public List<Avaliacao> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -127,7 +131,7 @@ public class AvaliacaoController implements Serializable {
             }
             AvaliacaoController controller = (AvaliacaoController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "avaliacaoController");
-            return controller.getFacade().find(getKey(value));
+            return controller.getAvaliacao(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {

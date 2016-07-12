@@ -12,8 +12,6 @@
             <h:form id="OportunidadeCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{oportunidadeController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateOportunidadeLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{oportunidadeController.selected.id}" title="#{bundle.CreateOportunidadeTitle_id}" required="true" requiredMessage="#{bundle.CreateOportunidadeRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateOportunidadeLabel_codigo}" for="codigo" />
                         <p:inputText id="codigo" value="#{oportunidadeController.selected.codigo}" title="#{bundle.CreateOportunidadeTitle_codigo}" />
                         <p:outputLabel value="#{bundle.CreateOportunidadeLabel_nome}" for="nome" />

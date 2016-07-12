@@ -29,6 +29,12 @@
 
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAcaoTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAcaoTitle_codigo}"/>
                             </f:facet>
                             <h:outputText value="#{item.codigo}"/>
@@ -44,7 +50,7 @@
                                 <h:outputText value="#{bundle.ListAcaoTitle_dataInicial}"/>
                             </f:facet>
                             <h:outputText value="#{item.dataInicial}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column>
@@ -52,7 +58,7 @@
                                 <h:outputText value="#{bundle.ListAcaoTitle_dataFinal}"/>
                             </f:facet>
                             <h:outputText value="#{item.dataFinal}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column>
