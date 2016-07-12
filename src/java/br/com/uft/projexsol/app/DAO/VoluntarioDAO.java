@@ -26,4 +26,20 @@ public class VoluntarioDAO {
             return false;
         }
     }
+    
+    public Voluntario getVolutario(String login, String senha){
+        try{
+            SessionFactory sessaoDaFabrica = FabricaPersistente.getSessionFactory();
+            Session sessao = sessaoDaFabrica.openSession();
+            Query query = sessao.createQuery("from Voluntario where login = :id and senha = :pass");
+            query.setParameter("id", login);
+            query.setParameter("pass", senha);
+            Voluntario voluntario = (Voluntario) query.list().get(0);
+            
+            return voluntario;
+            
+        }catch(Exception e){
+           return null;
+        }
+    }
 }
