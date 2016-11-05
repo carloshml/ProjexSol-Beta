@@ -1,6 +1,37 @@
-body { 
+body {
+    height: 100%;
+    width: 100%;
     background-image: url('ProjetoxSol03.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center; 
+    background-position: center;
+}
+
+.barra-top{
+color: white;
+top: 0;
+width: 100%;
+height: 80px;
+background-color: #000784;
+}
+
+.tamanho-letra-barra{
+  font-size: 40px;
+}
+
+.texto-explicativo{
+  margin: 50px;
+  background-color:rgba(88, 77, 45, 0.8);
+
+
+}
+
+.login{
+  margin-top: 30px;
+}
+.plano-de-fundo{
+  color: white;
+  background-color: white;
+  background-color:rgba(0, 77, 0, 0.4);
+
 }
